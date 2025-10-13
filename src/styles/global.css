@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "static";
+    src: url("/StaticBuzz.woff2") format("woff2");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "freesans";
+    src: url("/FreeSans.otf") format("opentype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "lunchtype";
+    src: url("/Lunchtype21-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "lunchtype";
+    src: url("/Lunchtype21-Bold.ttf") format("truetype");
+    font-weight:700;
+    font-style: normal;
+    font-display: swap;
+}

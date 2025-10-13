@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout>
+  <div
+    style="background-image: url('./noise.png');"
+    class="fixed bg-center bg-no-repeat bg-cover"
+  >
+    <div class="h-screen w-screen">
+      <div class="pt-2 flex items-center">
+        <p
+          style="font-family:static"
+          class="text-[4em] tracking-[0.5rem] pl-8 text-[#C4CDDE]">
+          projects
+        </p>
+        <div class="flex text-right pl-[10em] pr-8 text-[#C4CDDE] text-[1.5em] space-x-[0.5em]" style="font-family:lunchtype; font-weight: 700;">
+            <p>favorites</p>
+            <p>all projects</p>
+            <p>hack club</p>
+            <p>hardware</p>
+            <p>hackathons</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
