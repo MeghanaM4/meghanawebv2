@@ -1,27 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import "../styles/projects.css"
 ---
 
 <Layout>
   <div
     style="background-image: url('./noise.png');"
-    class="fixed bg-center bg-no-repeat bg-cover"
+    class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-y-auto"
   >
-    <div class="h-screen w-screen">
+    <div>
       <div class="pt-2 flex items-center">
         <p
           style="font-family:static"
-          class="text-[4em] tracking-[0.5rem] pl-8 text-[#C4CDDE]">
+          class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE]">
           projects
         </p>
-        <div class="flex text-right pl-[10em] pr-8 text-[#C4CDDE] text-[1.5em] space-x-[0.5em]" style="font-family:lunchtype; font-weight: 700;">
-            <p>favorites</p>
-            <p>all projects</p>
-            <p>hack club</p>
-            <p>hardware</p>
-            <p>hackathons</p>
+        <div class="flex flex-wrap text-right text-balance pl-[20%] pr-8 text-[#C4CDDE] text-[1.5em] gap-[0.4em]" style="font-family:lunchtype; font-weight: 700;">
+            <p class="hover-underline">favorites</p>
+            <p class="hover-underline">all projects</p>
+            <p class="hover-underline">hack club</p>
+            <p class="hover-underline">hardware</p>
+            <p class="hover-underline">hackathons</p>
         </div>
+      </div>
+    </div>
+    <div class="w-screen mt-4">
+      <div class="project h-[20rem] bg-white w-[40vw] overflow-hidden rounded-lg shadow-[0.5rem_0.5rem_0_black] ml-[2.5rem] border border-solid border-[#C4CDDE] border-4">
+        <img src="wonderwalle.png">
       </div>
     </div>
   </div>
