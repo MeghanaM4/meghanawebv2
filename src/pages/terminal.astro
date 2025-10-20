@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import "../styles/terminal.css";
+---
+
+<Layout>
+  <div
+    style="background-image: url('./noise.png');"
+    class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-y-auto overflow-x-hidden"
+  >
+    <p
+      class="text-[#C4CDDE] m-[1rem] text-shadow-md ml-[2rem]"
+      style="font-family:lunchtype; font-weight: 700; font-size: 3rem; width:max-content"
+    >
+      meghana.co terminal
+    </p>
+
+    <div class="headings text-[#C4CDDE] m-[1rem] text-shadow-lg ml-[2rem] mt-[2rem] flex flex-col gap-[1.5rem]">
+        <a href="about" class="heading flex gap-[1rem]">
+            <span>></span><p class="">about</p>
+        </a>
+        <a href="projects" class="heading flex gap-[1rem]">
+            <span>></span><p class="">projects</p>
+        </a>
+        <a class="heading flex gap-[1rem]">
+            <span>></span><p class="">etc</p>
+        </a>
+    </div>
+  </div>
+</Layout>

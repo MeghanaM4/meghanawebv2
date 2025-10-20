@@ -1,0 +1,20 @@
+.headings {
+  font-family: freesans;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.heading {
+  opacity: 30%;
+  width:vw;
+}
+
+.heading:hover {
+  opacity: 100%;
+}
+
+.heading p:hover {
+  text-decoration-line: underline;
+  text-underline-offset: 1rem;
+  text-decoration-thickness: 0.2rem;
+}
