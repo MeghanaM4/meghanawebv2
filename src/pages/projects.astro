@@ -2,11 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import "../styles/projects.css";
+import Card from "../components/Card.astro";
+import data from "../data/projects.json";
 ---
 
 <Layout>
   <div
-    style="background-image: url('./noise.png');"
+    style="background-image: url('./noise.webp');"
     class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-y-auto overflow-x-hidden"
   >
     <div>
@@ -21,107 +23,44 @@ import "../styles/projects.css";
           class="flex flex-wrap text-right text-balance pl-[20%] pr-8 text-[#C4CDDE] text-[1.5em] gap-[0.4em]"
           style="font-family:lunchtype; font-weight: 700;"
         >
-          <p class="hover-underline">favorites</p>
-          <p class="hover-underline">all projects</p>
-          <p class="hover-underline">hack club</p>
-          <p class="hover-underline">hardware</p>
-          <p class="hover-underline">hackathons</p>
+          <p id="projects" onclick="setFilter('projects')" class="hover-underline">
+            all projects
+          </p>
+          <p id="favorites" onclick="setFilter('favorites')" class="hover-underline">
+            favorites
+          </p>
+          <p id="hack club" onclick="setFilter('hack club')" class="hover-underline">
+            hack club
+          </p>
+          <p id="hardware" onclick="setFilter('hardware')" class="hover-underline">
+            hardware
+          </p>
+          <p id="hackathons" onclick="setFilter('hackathons')" class="hover-underline">
+            hackathons
+          </p>
         </div>
       </div>
     </div>
-    <div class="w-screen mt-4">
-      <div
-        class="project max-h-[35rem] bg-[#D9D9D9] w-[35vw] max-w-[40rem] min-w-[20rem] overflow-hidden rounded-lg ml-[2.5rem] border border-solid border-[#C4CDDE] border-[0.4rem]"
+
+    <div class="flex w-screen items-center justify-center mt-4 px-4">
+      <div id="card-container"
+        class="columns-1 md:columns-2 lg:columns-3 gap-[3rem] w-full max-w-[90%] mx-auto"
       >
-        <img src="wonderwalle.png" />
-        <div class="ml-[0.7rem] w-full">
-          <div
-            class="flex gap-2 mt-[0.7rem] pr-[1.1rem] text-[1.1rem] w-full items-center mb-[0.7rem]"
-          >
-            <p
-              class="flex-1 whitespace-nowrap"
-              style="font-family:freesans; font-weight: 700;"
-            >
-              Scrapyard Columbus
-            </p>
-            <p
-              class="flex-1 text-center"
-              style="font-family:freesans; font-weight: 700; color:#A8A8A8; font-style: italic;"
-            >
-              jan - mar 2025
-            </p>
-            <div
-              class="bg-[#C7B363] pl-[0.5rem] pr-[0.5rem] pt-[0.1rem] pb-[0.1rem] rounded-[3rem]"
-              style="height:max-content"
-            >
-              <p
-                style="font-family:freesans; font-weight: 700; font-size: small;"
-              >
-                NEW
-              </p>
-            </div>
-          </div>
-
-          <p
-            class="ml-[0.5rem] pr-[1.5rem]"
-            style="font-family:freesans; line-height:1.1rem; color:#414C60; font-size: 0.9 rem;"
-          >
-            I brought 50 teenagers from all over my city to participate in a
-            useless-invention hackathon. I got sponsors, generated interest,
-            planned out logistics, and lost a lot of sleep.
-          </p>
-
-          <div class="flex mt-[1.5rem] mb-[1.5rem] gap-4">
-            <a
-              href="#"
-              class="group link"
-            >
-              <span
-                class="flex items-center gap-1"
-              >
-                site
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  ><path
-                    fill="#000000"
-                    d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"></path></svg
-                >
-              </span>
-            </a>
-            <a
-              href="#"
-              class="group link"
-            >
-              <span class="flex items-center gap-1">
-                gallery
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  ><path
-                    fill="#000000"
-                    d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"></path></svg
-                >
-              </span>
-            </a>
-            <a
-              href="#"
-              class="group link"
-            >
-              <span class="flex items-center gap-1">
-                code
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  ><path
-                    fill="#000000"
-                    d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"></path></svg
-                >
-              </span>
-            </a>
-          </div>
-        </div>
+        {data.map((project) => <Card project={project} />)}
       </div>
     </div>
   </div>
+
+  <script>
+    let userFilter = ''
+
+    function setFilter(filter: string) {
+      userFilter = filter;
+    }
+
+    function populateCards(filter: string) {
+      const cardContainer = document.getElementById('card-container');
+
+    }
+  </script>
 </Layout>

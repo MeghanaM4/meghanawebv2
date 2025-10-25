@@ -1,22 +1,37 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>meghana.co</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>meghana.co</title>
+
+    <meta name="title" content="meghana.co" />
+    <meta name="description" content="check out what meghana's working on" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://meghana.co/" />
+    <meta property="og:title" content="meghana.co" />
+    <meta property="og:description" content="what's meghana up to?" />
+    <meta property="og:image" content="" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://meghana.co/" />
+    <meta property="twitter:title" content="meghana.co" />
+    <meta property="twitter:description" content="what's meghana up to?" />
+    <meta property="twitter:image" content="" />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

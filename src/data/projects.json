@@ -1,0 +1,119 @@
+[
+    {
+        "name": "MAD-16",
+        "imgsrc": "public/mad16.webp",
+        "description": "I designed the body and front wing aerodynamics of a Formula 1 chassis, named the MAD-16 after my last name and my 16th birthday.",
+        "date": "nov 2024",
+        "tag": true,
+        "tagColor": "#C7B363",
+        "tagText": "FAVORITE",
+        "numButtons": 3,
+        "buttons":["3D model", "git repo"],
+        "buttonLinks": ["https://a360.co/42Ld6s0s", "https://github.com/MeghanaM4/MAD16"],
+        "filters": ["favorites", "projects", "hardware"]
+    },
+
+    {
+        "name": "Scrapyard Columbus",
+        "imgsrc": "public/SYCMH.webp",
+        "description": "I brought 50 teenagers from all over my city to participate in a useless-invention hackathon. I got sponsors, generated interest, planned out logistics, and lost a lot of sleep.",
+        "date": "jan - mar 2025",
+        "tag": true,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["site", "gallery"],
+        "buttonLinks": ["https://scrapyard.hackclub.com/columbus", "https://pastbridge.smugmug.com/Events/Scrapyard-Hackathon"],
+        "filters": ["favorites", "hack club", "hackathons"]
+    },
+
+    {
+        "name": "Trash Talking Trash Can",
+        "imgsrc": "public/TTTC.webp",
+        "description": "A trash can that insults you whenever you use it. We crowd-sourced insults from fellow hackers and got them to say mean stuff into a microphone, then rigged a bunch of servo motors to make the most inconvenient trash can ever.",
+        "date": "mar 2025",
+        "tag": false,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["demo", "git repo"],
+        "buttonLinks": ["https://youtu.be/JxGyt0A78mU", "https://github.com/Dongathan-Jong/TTTC"],
+        "filters": ["projects", "hack club", "hardware"]
+    },
+
+    {
+        "name": "Zuck Test",
+        "imgsrc": "public/zucktest.webp",
+        "description": "A website to test your knowledge on my favorite movie of all time, The Social Network (2010)",
+        "date": "may - jun 2025",
+        "tag": false,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["site", "git repo"],
+        "buttonLinks": ["https://zucktest.onrender.com/", "https://github.com/MeghanaM4/zucktest"],
+        "filters": ["favorites", "projects"]
+    },
+
+    {
+        "name": "Wonderwalle",
+        "imgsrc": "public/wonderwalle.webp",
+        "description": "A guitar-strumming robot that acts as an autolooper. Its metronome mode also dances while you play and helps keep tempo.",
+        "date": "apr 2025",
+        "tag": false,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["demo", "git repo", "devpost"],
+        "buttonLinks": ["https://www.youtube.com/watch?v=eZwgar4Enxg", "https://github.com/MeghanaM4/wonderwallE", "https://devpost.com/software/wonderwalle"],
+        "filters": ["favorites", "projects", "hardware"]
+    },
+
+    {
+        "name": "Odyssey",
+        "imgsrc": "public/odyssey.webp",
+        "description": "As part of Hack Club's Apex event, a high altitude balloon payload collecting pressure, gyro, and magnetometer data.",
+        "date": "apr - jun 2025",
+        "tag": false,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["git repo"],
+        "buttonLinks": ["https://github.com/MeghanaM4/odyssey"],
+        "filters": ["favorites", "projects", "hack club", "hardware"]
+    },
+
+    {
+        "name": "Optica",
+        "imgsrc": "public/optica.webp",
+        "description": "A way for the blind/visually impaired to experience the world through computer vision.",
+        "date": "sep 2024",
+        "tag": false,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["git repo", "devpost"],
+        "buttonLinks": ["https://github.com/ddiyas/OpticaV2", "https://devpost.com/software/optica-gar7hw"],
+        "filters": ["projects", "hardware"]
+    },
+
+    {
+        "name": "Autonomous Manufacturing Robots",
+        "imgsrc": "public/manfrob.webp",
+        "description": "A way for the blind/visually impaired to experience the world through computer vision.",
+        "date": "sep 2024",
+        "tag": false,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["demo", "git repo"],
+        "buttonLinks": ["https://hc-cdn.hel1.your-objectstorage.com/s/v3/f453f3565a13283371f4fcb7ffa93f84a36ad261_vid-20231107-wa0001_3_.mp4", "https://github.com/spyalexs/ArduinoManufacturingRobots"],
+        "filters": ["projects", "hardware"]
+    },
+
+    {
+        "name": "Tulip Track",
+        "imgsrc": "public/tuliptrack.webp",
+        "description": "Measures the tremors of Parkinson's patients and relays data to doctors to allow for 24/7 monitoring.",
+        "date": "feb 2025",
+        "tag": false,
+        "tagColor": "#C7B363",
+        "tagText": "NEW",
+        "buttons":["git repo", "devpost"],
+        "buttonLinks": ["https://github.com/ddiyas/OpticaV2", "https://devpost.com/software/optica-gar7hw"],
+        "filters": ["projects", "hardware"]
+    }
+]
