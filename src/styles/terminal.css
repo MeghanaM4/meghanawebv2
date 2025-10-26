@@ -17,4 +17,7 @@
   text-decoration-line: underline;
   text-underline-offset: 1rem;
   text-decoration-thickness: 0.2rem;
+
+  animation: blinking 1s infinite;
+  animation-direction: alternate;
 }

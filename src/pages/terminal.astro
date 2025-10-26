@@ -7,25 +7,29 @@ import "../styles/terminal.css";
 <Layout>
   <div
     style="background-image: url('./noise.webp');"
-    class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-y-auto overflow-x-hidden"
+    class="fixed inset-0 bg-cover overflow-y-hidden overflow-x-hidden w-screen flex items-center justify-center"
   >
-    <p
-      class="text-[#C4CDDE] m-[1rem] text-shadow-md ml-[2rem]"
-      style="font-family:lunchtype; font-weight: 700; font-size: 3rem; width:max-content"
-    >
-      meghana.co terminal
-    </p>
+    <div class="border border-4 border-[#C4CDDE]" style="width:fit-content">
+      <p
+        class="text-[#C4CDDE] m-[1rem] text-shadow-md ml-[2rem] mr-[2rem]"
+        style="font-family:lunchtype; font-weight: 700; font-size: 3rem; width:max-content"
+      >
+        meghana.co terminal
+      </p>
 
-    <div class="headings text-[#C4CDDE] m-[1rem] text-shadow-lg ml-[2rem] mt-[2rem] flex flex-col gap-[1.5rem]">
+      <div
+        class="headings text-[#C4CDDE] text-shadow-lg ml-[2rem] mt-[2rem] mb-[2rem] flex flex-col gap-[1.5rem]"
+      >
         <a href="about" class="heading flex gap-[1rem]">
-            <span>></span><p class="">about</p>
+          <span>></span><p class="">about</p>
         </a>
         <a href="projects" class="heading flex gap-[1rem]">
-            <span>></span><p class="">projects</p>
+          <span>></span><p class="">projects</p>
         </a>
         <a class="heading flex gap-[1rem]">
-            <span>></span><p class="">etc</p>
+          <span>></span><p class="">etc</p>
         </a>
+      </div>
     </div>
   </div>
 </Layout>

@@ -1,7 +1,7 @@
 [
     {
         "name": "MAD-16",
-        "imgsrc": "public/mad16.webp",
+        "imgsrc": "./mad16.webp",
         "description": "I designed the body and front wing aerodynamics of a Formula 1 chassis, named the MAD-16 after my last name and my 16th birthday.",
         "date": "nov 2024",
         "tag": true,
@@ -15,7 +15,7 @@
 
     {
         "name": "Scrapyard Columbus",
-        "imgsrc": "public/SYCMH.webp",
+        "imgsrc": "./SYCMH.webp",
         "description": "I brought 50 teenagers from all over my city to participate in a useless-invention hackathon. I got sponsors, generated interest, planned out logistics, and lost a lot of sleep.",
         "date": "jan - mar 2025",
         "tag": true,
@@ -28,7 +28,7 @@
 
     {
         "name": "Trash Talking Trash Can",
-        "imgsrc": "public/TTTC.webp",
+        "imgsrc": "./TTTC.webp",
         "description": "A trash can that insults you whenever you use it. We crowd-sourced insults from fellow hackers and got them to say mean stuff into a microphone, then rigged a bunch of servo motors to make the most inconvenient trash can ever.",
         "date": "mar 2025",
         "tag": false,
@@ -41,7 +41,7 @@
 
     {
         "name": "Zuck Test",
-        "imgsrc": "public/zucktest.webp",
+        "imgsrc": "./zucktest.webp",
         "description": "A website to test your knowledge on my favorite movie of all time, The Social Network (2010)",
         "date": "may - jun 2025",
         "tag": false,
@@ -54,7 +54,7 @@
 
     {
         "name": "Wonderwalle",
-        "imgsrc": "public/wonderwalle.webp",
+        "imgsrc": "./wonderwalle.webp",
         "description": "A guitar-strumming robot that acts as an autolooper. Its metronome mode also dances while you play and helps keep tempo.",
         "date": "apr 2025",
         "tag": false,
@@ -67,7 +67,7 @@
 
     {
         "name": "Odyssey",
-        "imgsrc": "public/odyssey.webp",
+        "imgsrc": "./odyssey.webp",
         "description": "As part of Hack Club's Apex event, a high altitude balloon payload collecting pressure, gyro, and magnetometer data.",
         "date": "apr - jun 2025",
         "tag": false,
@@ -80,7 +80,7 @@
 
     {
         "name": "Optica",
-        "imgsrc": "public/optica.webp",
+        "imgsrc": "./optica.webp",
         "description": "A way for the blind/visually impaired to experience the world through computer vision.",
         "date": "sep 2024",
         "tag": false,
@@ -93,7 +93,7 @@
 
     {
         "name": "Autonomous Manufacturing Robots",
-        "imgsrc": "public/manfrob.webp",
+        "imgsrc": "./manfrob.webp",
         "description": "A way for the blind/visually impaired to experience the world through computer vision.",
         "date": "sep 2024",
         "tag": false,
@@ -106,7 +106,7 @@
 
     {
         "name": "Tulip Track",
-        "imgsrc": "public/tuliptrack.webp",
+        "imgsrc": "./tuliptrack.webp",
         "description": "Measures the tremors of Parkinson's patients and relays data to doctors to allow for 24/7 monitoring.",
         "date": "feb 2025",
         "tag": false,
