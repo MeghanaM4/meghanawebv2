@@ -18,7 +18,7 @@
         "imgsrc": "./SYCMH.webp",
         "description": "I brought 50 teenagers from all over my city to participate in a useless-invention hackathon. I got sponsors, generated interest, planned out logistics, and lost a lot of sleep.",
         "date": "jan - mar 2025",
-        "tag": true,
+        "tag": false,
         "tagColor": "#C7B363",
         "tagText": "NEW",
         "buttons":["site", "gallery"],

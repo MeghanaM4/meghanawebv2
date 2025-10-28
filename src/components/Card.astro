@@ -13,16 +13,16 @@ const { project } = Astro.props;
 
   <div class="ml-[0.7rem] w-full">
     <div
-      class="flex gap-2 mt-[0.7rem] pr-[1.1rem] text-[1.1rem] w-full items-center mb-[0.7rem]"
+      class="flex ap-2 mt-[0.7rem] pr-[1.1rem] text-[1.1rem] w-full items-center mb-[0.7rem]"
     >
       <p
-        class="flex-1 whitespace-nowrap"
+        class="flex-1 mr-2"
         style="font-family:freesans; font-weight: 700;"
       >
         {project.name}
       </p>
       <p
-        class="flex-1 text-center"
+        class="w-fit mr-2"
         style="font-family:freesans; font-weight: 700; color:#A8A8A8; font-style: italic;"
       >
         {project.date}
@@ -52,7 +52,7 @@ const { project } = Astro.props;
     <div class="flex flex-wrap mt-[1.5rem] mb-[1.5rem] gap-4">
       {
         project.buttons.map((buttonText: string, i: number) => (
-          <a href={project.buttonLinks[i]} class="group link">
+          <a target="_blank" href={project.buttonLinks[i]} class="group link">
 
             <span class="flex items-center gap-1">
               {buttonText}
