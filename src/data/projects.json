@@ -2,7 +2,7 @@
     {
         "name": "MAD-16",
         "imgsrc": "./mad16.webp",
-        "description": "I designed the body and front wing aerodynamics of a Formula 1 chassis, named the MAD-16 after my last name and my 16th birthday.",
+        "description": "I designed the body and front wing aerodynamics of a Formula 1 chassis, named the MAD-16 after my last name.",
         "date": "nov 2024",
         "tag": true,
         "tagColor": "#C7B363",

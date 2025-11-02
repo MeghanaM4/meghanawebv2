@@ -15,7 +15,10 @@ const { project } = Astro.props;
     <div
       class="flex ap-2 mt-[0.7rem] pr-[1.1rem] text-[1.1rem] w-full items-center mb-[0.7rem]"
     >
-      <p class="flex-1 mr-2" style="font-family:freesans; font-weight: 700;">
+      <p
+        class="flex-1 mr-2"
+        style="font-family:freesans; font-weight: 700;"
+      >
         {project.name}
       </p>
       <p
@@ -43,20 +46,14 @@ const { project } = Astro.props;
       class="ml-[0.5rem] pr-[1.5rem]"
       style="font-family:freesans; line-height:1.1rem; color:#414C60; font-size: 0.9 rem;"
     >
-      {project.description}
-      <!-- <div>
-        {
-          Object.keys(data).map((key) => (
-            <a href={`#${key}`} class="text-[#8a8a8a] text-[0.8rem]">(see more)</a>
-          ))
-        }
-      </div> -->
+      {project.description} <a onclick="" class="text-[#8a8a8a] text-[0.8rem]">(see more)</a>
     </p>
 
     <div class="flex flex-wrap mt-[1.5rem] mb-[1.5rem] gap-4">
       {
         project.buttons.map((buttonText: string, i: number) => (
           <a target="_blank" href={project.buttonLinks[i]} class="group link">
+
             <span class="flex items-center gap-1">
               {buttonText}
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -66,6 +63,7 @@ const { project } = Astro.props;
                 />
               </svg>
             </span>
+
           </a>
         ))
       }
