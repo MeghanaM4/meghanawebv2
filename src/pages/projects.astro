@@ -4,6 +4,7 @@ import "../styles/global.css";
 import "../styles/projects.css";
 import Card from "../components/Card.astro";
 import data from "../data/projects.json";
+import Footer from "../components/Footer.astro"
 ---
 
 <Layout>
@@ -19,6 +20,7 @@ import data from "../data/projects.json";
         >
           projects
         </p>
+
         <div
           class="flex flex-wrap text-right text-balance pl-[20%] pr-8 text-[#C4CDDE] text-[1.5em] gap-[0.4em]"
           style="font-family:lunchtype; font-weight: 700;"
@@ -62,12 +64,15 @@ import data from "../data/projects.json";
       </div>
     </div>
 
-    <a href="./terminal" class="fixed bottom-[1rem] rounded-[5rem] w-[4%] aspect-square bg-[#FDC576] ml-[1rem] z-5 flex items-center justify-center">
-      
+    <a
+      href="./terminal"
+      class="fixed bottom-[1rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576] 
+      ml-[1rem] z-5 flex items-center justify-center"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="32"
         height="32"
+        width="32"
         viewBox="0 0 24 24"
         ><!-- Icon from NRK Core Icons by Norsk rikskringkasting - https://creativecommons.org/licenses/by/4.0/ -->
         <path
@@ -85,6 +90,8 @@ import data from "../data/projects.json";
         {data.map((project) => <Card project={project} />)}
       </div>
     </div>
+
+    <Footer/>
   </div>
 
   <script>
