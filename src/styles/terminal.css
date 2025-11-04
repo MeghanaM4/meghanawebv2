@@ -7,17 +7,36 @@
 .heading {
   opacity: 30%;
   width:vw;
+  gap: 1rem;
 }
 
-.heading:hover {
+.heading.selected {
   opacity: 100%;
 }
 
-.heading p:hover {
+.heading.selected p {
   text-decoration-line: underline;
   text-underline-offset: 1rem;
   text-decoration-thickness: 0.2rem;
 
-  animation: blinking 1s infinite;
+  animation: blinking 0.7s infinite;
   animation-direction: alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(0px, 2px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.bounce {
+  animation: bounce 1.2s ease-in-out;
+  animation-iteration-count: infinite;
+
 }

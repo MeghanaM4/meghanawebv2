@@ -9,7 +9,9 @@ import "../styles/terminal.css";
     style="background-image: url('/noise.webp');"
     class="fixed inset-0 bg-cover overflow-y-hidden overflow-x-hidden w-screen flex items-center justify-center"
   >
-    <div class="border border-4 border-[#C4CDDE] w-[80%] ml-[2rem] mr-[2rem] max-w-fit">
+    <div
+      class="border border-4 border-[#C4CDDE] w-[80%] ml-[2rem] mr-[2rem] max-w-fit"
+    >
       <p
         class="text-[#C4CDDE] m-[1rem] text-shadow-md ml-[2rem] mr-[2rem]"
         style="font-family:lunchtype; font-weight: 700; font-size: 3rem;"
@@ -20,16 +22,71 @@ import "../styles/terminal.css";
       <div
         class="headings text-[#C4CDDE] text-shadow-lg ml-[2rem] mt-[2rem] mb-[2rem] flex flex-col gap-[1.5rem]"
       >
-        <a href="about" class="heading flex gap-[1rem]">
+        <a href="about" id="about" class="heading flex">
           <span>></span><p class="">about</p>
         </a>
-        <a href="projects" class="heading flex gap-[1rem]">
+        <a href="projects" id="projects" class="heading flex">
           <span>></span><p class="">projects</p>
         </a>
-        <a class="heading flex gap-[1rem]">
-          <span>></span><p class="">etc</p>
+        <a href="contact" id="contact" class="heading flex">
+          <span>></span><p class="">contact</p>
         </a>
       </div>
     </div>
+
+    <div class="bounce fixed bottom-0 right-0 mb-[1rem] mr-[1rem] bg-[#c4cdde] flex flex-row items-center rounded-md p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><path fill="#000000" d="M72.61 83.06a8 8 0 0 1 1.73-8.72l48-48a8 8 0 0 1 11.32 0l48 48A8 8 0 0 1 176 88H80a8 8 0 0 1-7.39-4.94M176 168H80a8 8 0 0 0-5.66 13.66l48 48a8 8 0 0 0 11.32 0l48-48A8 8 0 0 0 176 168"/></svg>
+      <p style="font-family: lunchtype;">you can also use arrow keys!</p>
+    </div>
   </div>
 </Layout>
+
+<script>
+  const tags = document.querySelectorAll(".headings a");
+  let i = 0;
+
+  function clearSelection() {
+    tags.forEach((tag) => tag.classList.remove("selected"));
+  }
+
+  function selectLink(index: number) {
+    clearSelection();
+    tags[index].classList.add("selected");
+  }
+
+  selectLink(0);
+
+  tags.forEach((tag, index) => {
+    tag.addEventListener("mouseenter", () => {
+      selectLink(index);
+    });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "ArrowDown") {
+      e.preventDefault();
+
+      tags[i].classList.remove("selected");
+      i = (i + 1) % tags.length; //I feel so smart
+      tags[i].classList.add("selected");
+    }
+
+    if (e.code === "ArrowUp") {
+      e.preventDefault();
+
+      tags[i].classList.remove("selected");
+      if (i == 0) { //ternary operators are for nerds
+        i = tags.length - 1;
+        
+      } else {
+        i -= 1;
+      }
+      tags[i].classList.add("selected");
+    }
+
+    if (e.code === "Enter") {
+      e.preventDefault();
+      window.location.href = tags[i].id;
+    }
+  });
+</script>
