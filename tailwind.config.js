@@ -6,10 +6,8 @@ export default{
             fontFamily: {
                 static:['static'],
                 freesans:['freesans'],
-                lunchtype:['lunchtype']
-            },
-            screens: {
-                'xs': '430px' //iPhone 14 (this is for my friends)
+                lunchtype:['lunchtype'],
+                instrument:['instrument']
             }
         },
     },

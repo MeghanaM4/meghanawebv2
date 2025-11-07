@@ -9,14 +9,14 @@
 
 @font-face {
     font-family: "freesans";
-    src: url("/FreeSans.otf") format("opentype");
+    src: url("/FreeSans.woff2") format("woff2");
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: "freesans";
-    src: url("/FreeSansBold.otf") format("opentype");
+    src: url("/FreeSansBold.woff2") format("woff2");
     font-style: normal;
     font-weight:700;
     font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: "freesans";
-    src: url("/FreeSansBoldOblique.otf") format("opentype");
+    src: url("/FreeSansBoldOblique.woff2") format("woff2");
     font-style: normal;
     font-weight:700;
     font-style: italic;
@@ -33,17 +33,31 @@
 
 @font-face {
     font-family: "lunchtype";
-    src: url("/Lunchtype21-Regular.ttf") format("truetype");
+    src: url("/Lunchtype21-Regular.woff2") format("woff2");
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: "lunchtype";
-    src: url("/Lunchtype21-Bold.ttf") format("truetype");
+    src: url("/Lunchtype21-Bold.woff2") format("woff2");
     font-weight:700;
     font-style: normal;
     font-display: swap;
+}
+
+@font-face {
+    font-family: "instrument";
+    src: url("/InstrumentSerif-Italic.woff2") format("woff2");
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "instrument";
+    src: url("/InstrumentSerif-Regular.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
 }
 
 .title {

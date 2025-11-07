@@ -4,7 +4,7 @@ import "../styles/global.css";
 import "../styles/projects.css";
 import Card from "../components/Card.astro";
 import data from "../data/projects.json";
-import Footer from "../components/Footer.astro"
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
@@ -20,6 +20,35 @@ import Footer from "../components/Footer.astro"
         >
           projects
         </p>
+
+        <!-- 
+        // From Uiverse.io by alexruix
+        <label
+          class="absolute top-0 right-8 h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
+          for="switch"
+        >
+          <input
+            class="peer sr-only"
+            id="switch"
+            type="checkbox"
+            onclick="toggleDither()"
+          />
+
+          <span class="absolute inset-0 m-auto h-2 rounded-full bg-stone-400"
+          ></span>
+
+          <span
+            class="absolute inset-y-0 start-0 m-auto size-6 rounded-full bg-stone-600 transition-all peer-checked:start-6 peer-checked:[&_>_*]:scale-0"
+          >
+            <span
+              class="absolute inset-0 m-auto size-4 rounded-full bg-stone-300 transition"
+            >
+            </span>
+          </span>
+          <p class="text-white text-xs whitespace-nowrap mt-[1.5rem]">
+            toggle dither
+          </p>
+        </label> -->
 
         <div
           class="flex flex-wrap text-right text-balance pl-[20%] pr-8 text-[#C4CDDE] text-[1.5em] gap-[0.4em]"
@@ -66,7 +95,7 @@ import Footer from "../components/Footer.astro"
 
     <a
       href="./terminal"
-      class="fixed bottom-[1rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576] 
+      class="fixed bottom-[1rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576]
       ml-[1rem] z-5 flex items-center justify-center"
     >
       <svg
@@ -87,11 +116,18 @@ import Footer from "../components/Footer.astro"
         id="card-container"
         class="columns-1 md:columns-2 lg:columns-3 gap-[3rem] w-full max-w-[90%] mx-auto"
       >
-        {data.map((project) => <Card project={project} />)}
+        {
+          data.map((project) => (
+            <Card
+              project={project}
+              projectId={encodeURIComponent(project.name)}
+            />
+          ))
+        }
       </div>
     </div>
 
-    <Footer/>
+    <Footer />
   </div>
 
   <script>
@@ -107,5 +143,38 @@ import Footer from "../components/Footer.astro"
     //     .map((project) => <Card project={project} />)
     //   }
     // }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        openModal(hash);
+      }
+    });
+
+    window.addEventListener("hashchange", () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        openModal(hash);
+      } else {
+        closeModal(hash);
+      }
+    });
+
+    function openModal(id: string) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove("hidden");
+      }
+    }
+
+    function closeModal(id: string) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add("hidden");
+      }
+      if (window.location.hash) {
+        history.pushState("", document.title, window.location.pathname);
+      }
+    }
   </script>
 </Layout>
