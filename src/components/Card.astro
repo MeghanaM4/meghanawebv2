@@ -1,74 +1,134 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import "../styles/projects.css";
 import data from "../data/projects.json";
 const { project } = Astro.props;
+import { marked } from "marked";
 ---
 
-<div
-  class="project bg-[#D9D9D9] w-full max-w-[24rem] mx-auto overflow-hidden rounded-lg border border-solid border-[#C4CDDE] border-[0.4rem] break-inside-avoid mb-[3rem] inline-block"
->
-  <img src={project.imgsrc} />
+<div class="project-wrapper z-1 relative inline-block mb-[3rem] hover:z-10">
+  <div
+    class="project dither bg-[#D9D9D9] w-full max-w-[24rem] mx-auto overflow-hidden rounded-lg border border-solid border-[#C4CDDE] border-[0.4rem] break-inside-avoid inline-block"
+  >
+    <div class="flex flex-row items-center">
+      <div>
+        <img src={project.imgsrc} />
 
-  <div class="ml-[0.7rem] w-full">
-    <div
-      class="flex ap-2 mt-[0.7rem] pr-[1.1rem] text-[1.1rem] w-full items-center mb-[0.7rem]"
-    >
-      <p class="flex-1 mr-2" style="font-family:freesans; font-weight: 700;">
-        {project.name}
-      </p>
-      <p
-        class="w-fit mr-2"
-        style="font-family:freesans; font-weight: 700; color:#A8A8A8; font-style: italic;"
-      >
-        {project.date}
-      </p>
+        <div class="flex flex-row items-center">
+          <div class="ml-[0.7rem] w-full">
+            <div
+              class="inline-flex w-full gap-2 mt-[0.7rem] pr-[1.1rem] text-[1.1rem] items-center mb-[0.7rem]"
+            >
+              <p
+                class="flex-1 mr-2"
+                style="font-family:freesans; font-weight: 700;"
+              >
+                {project.name}
+              </p>
 
-      {
-        project.tag && (
-          <div
-            class="pl-[0.5rem] pr-[0.5rem] pt-[0.2rem] pb-[0.1rem] rounded-[3rem]"
-            style={`height:max-content; background-color: ${project.tagColor}`}
-          >
-            <p style="font-family:freesans; font-weight: 700; font-size: small;">
-              {project.tagText}
-            </p>
+              <div class="flex flex-row">
+                <p
+                  class="w-fit mr-2"
+                  style="font-family:freesans; font-weight: 700; color:#A8A8A8; font-style: italic;"
+                >
+                  {project.date}
+                </p>
+
+                {
+                  project.tag && (
+                    <div
+                      class="pl-[0.5rem] pr-[0.5rem] pt-[0.2rem] pb-[0.1rem] rounded-[3rem]"
+                      style={`height:max-content; background-color: ${project.tagColor}`}
+                    >
+                      <p style="font-family:freesans; font-weight: 700; font-size: small;">
+                        {project.tagText}
+                      </p>
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+
+            <div class="desc flex flex-row ml-[0.5rem] pr-[1.5rem] h-fit">
+              <p
+                class="h-fit leading-[1.3rem]"
+                style="font-family:freesans; color:#414C60; font-size: 0.9 rem;"
+                set:html={marked.parseInline(project.description)}
+              />
+            </div>
+
+            <div class="flex flex-wrap mt-[1.5rem] mb-[1.5rem] gap-4">
+              {
+                project.buttons.map((buttonText: string, i: number) => (
+                  <a
+                    target="_blank"
+                    href={project.buttonLinks[i]}
+                    class="group link pr-[1.2rem] pl-[1.2rem] pb-[0.5rem] pt-[0.5rem]"
+                  >
+                    <span class="flex items-center gap-1">
+                      {buttonText}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="#000000"
+                          d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+                ))
+              }
+            </div>
           </div>
-        )
-      }
-    </div>
-
-    <p
-      class="ml-[0.5rem] pr-[1.5rem]"
-      style="font-family:freesans; line-height:1.1rem; color:#414C60; font-size: 0.9 rem;"
-    >
-      {project.description}
-      <!-- <div>
-        {
-          Object.keys(data).map((key) => (
-            <a href={`#${key}`} class="text-[#8a8a8a] text-[0.8rem]">(see more)</a>
-          ))
-        }
-      </div> -->
-    </p>
-
-    <div class="flex flex-wrap mt-[1.5rem] mb-[1.5rem] gap-4">
-      {
-        project.buttons.map((buttonText: string, i: number) => (
-          <a target="_blank" href={project.buttonLinks[i]} class="group link">
-            <span class="flex items-center gap-1">
-              {buttonText}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path
-                  fill="#000000"
-                  d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"
-                />
-              </svg>
-            </span>
-          </a>
-        ))
-      }
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- <div class="sidebar cursor-pointer">
+    <a
+      class="sidebar-arrow flex flex-row gap-2"
+      href={`#${encodeURIComponent(project.name)}`}
+    >
+      <p
+        class="text-[#C4CDDE]"
+        style="font-family: freesans; font-weight: 700;"
+      >
+        see more
+      </p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        fill="currentColor"
+        height="32"
+        viewBox="0 0 24 24"
+        >
+        <path
+          fill="#C4CDDE"
+          d="m14.475 12l-7.35-7.35q-.375-.375-.363-.888t.388-.887t.888-.375t.887.375l7.675 7.7q.3.3.45.675t.15.75t-.15.75t-.45.675l-7.7 7.7q-.375.375-.875.363T7.15 21.1t-.375-.888t.375-.887z"
+        ></path></svg
+      >
+    </a>
+  </div> -->
 </div>
+
+  <dialog class="w-full h-full hidden outline-none ml-[1rem] bg-transparent flex justify-center items-center" id={`${encodeURIComponent(project.name)}`}>
+    <div class="w-1/2 h-1/2 rounded-xl 2 bg-[#C4CDDE]">
+      {project.name}
+    </div>
+  </dialog>
+
+<style>
+  .desc :global(strong) {
+    /* holy this is so cool */
+    color: #ff0feb;
+    font-weight: 700;
+  }
+
+  .desc :global(a) {
+    text-decoration: underline wavy; /* dude this is incredible */
+    text-decoration-color: #414c60;
+  }
+</style>

@@ -116,14 +116,7 @@ import Footer from "../components/Footer.astro";
         id="card-container"
         class="columns-1 md:columns-2 lg:columns-3 gap-[3rem] w-full max-w-[90%] mx-auto"
       >
-        {
-          data.map((project) => (
-            <Card
-              project={project}
-              projectId={encodeURIComponent(project.name)}
-            />
-          ))
-        }
+        {data.map((project) => <Card project={project} />)}
       </div>
     </div>
 
@@ -131,6 +124,8 @@ import Footer from "../components/Footer.astro";
   </div>
 
   <script>
+    import { DISPLAYFORMAT_LDR_SRGB } from "playcanvas";
+
     let userFilter = "";
 
     function setFilter(filter: string) {
@@ -144,37 +139,32 @@ import Footer from "../components/Footer.astro";
     //   }
     // }
 
-    window.addEventListener("DOMContentLoaded", () => {
+    function openModal() {
       const hash = window.location.hash.substring(1);
+      console.log(hash);
+      document.querySelectorAll("dialog").forEach((dialog) => {
+        dialog.close();
+        dialog.classList.add("hidden");
+      });
       if (hash) {
-        openModal(hash);
-      }
-    });
-
-    window.addEventListener("hashchange", () => {
-      const hash = window.location.hash.substring(1);
-      if (hash) {
-        openModal(hash);
-      } else {
-        closeModal(hash);
-      }
-    });
-
-    function openModal(id: string) {
-      const modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.remove("hidden");
+        const modal = document.getElementById(hash) as HTMLDialogElement;
+        if (modal) {
+          modal.showModal();
+          modal.classList.remove("hidden");
+        }
       }
     }
 
-    function closeModal(id: string) {
-      const modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.add("hidden");
-      }
-      if (window.location.hash) {
-        history.pushState("", document.title, window.location.pathname);
-      }
-    }
+    document.addEventListener("DOMContentLoaded", openModal);
+
+    window.addEventListener("hashchange", openModal);
+
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      dialog.addEventListener("close", () => {
+        if (window.location.hash === `#${dialog.id}`) {
+          history.pushState("", document.title, window.location.pathname);
+        }
+      });
+    });
   </script>
 </Layout>
