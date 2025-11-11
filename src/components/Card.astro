@@ -1,12 +1,11 @@
 ---
 import "../styles/global.css";
 import "../styles/projects.css";
-import data from "../data/projects.json";
 const { project } = Astro.props;
 import { marked } from "marked";
 ---
 
-<div class="project-wrapper z-1 relative inline-block mb-[3rem] hover:z-10">
+<div class="project-wrapper z-1 relative inline-block mb-[3rem]">
   <div
     class="project dither bg-[#D9D9D9] w-full max-w-[24rem] mx-auto overflow-hidden rounded-lg border border-solid border-[#C4CDDE] border-[0.4rem] break-inside-avoid inline-block"
   >
@@ -63,7 +62,7 @@ import { marked } from "marked";
                   <a
                     target="_blank"
                     href={project.buttonLinks[i]}
-                    class="group link pr-[1.2rem] pl-[1.2rem] pb-[0.5rem] pt-[0.5rem]"
+                    class="group link link-main pr-[1.2rem] pl-[1.2rem] pb-[0.5rem] pt-[0.5rem] rounded-[0.5rem]"
                   >
                     <span class="flex items-center gap-1">
                       {buttonText}
@@ -87,7 +86,7 @@ import { marked } from "marked";
     </div>
   </div>
 
-  <!-- <div class="sidebar cursor-pointer">
+  <div class="sidebar cursor-pointer">
     <a
       class="sidebar-arrow flex flex-row gap-2"
       href={`#${encodeURIComponent(project.slug)}`}
@@ -96,7 +95,7 @@ import { marked } from "marked";
         class="text-[#C4CDDE]"
         style="font-family: freesans; font-weight: 700;"
       >
-        see more
+        read more
       </p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -104,36 +103,130 @@ import { marked } from "marked";
         fill="currentColor"
         height="32"
         viewBox="0 0 24 24"
-        >
+      >
         <path
           fill="#C4CDDE"
           d="m14.475 12l-7.35-7.35q-.375-.375-.363-.888t.388-.887t.888-.375t.887.375l7.675 7.7q.3.3.45.675t.15.75t-.15.75t-.45.675l-7.7 7.7q-.375.375-.875.363T7.15 21.1t-.375-.888t.375-.887z"
         ></path></svg
       >
     </a>
-  </div> -->
+  </div>
 </div>
 
-  <dialog class="w-full h-full hidden outline-none ml-[1rem] bg-transparent flex justify-center items-center" id={`${encodeURIComponent(project.slug)}`}>
-    <div class="w-[60%] h-3/4 rounded-xl 2 bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden">
-      <div class="h-[60%]">
-          <div class="fixed text-white z-2 p-[0.3rem] pr-[0.5rem] pl-[0.5rem] m-[1rem] text-[1.3rem] bg-black leading-[1.3rem]" style="font-family: freesans; font-weight: 700; width:min-content">
-          Scrapyard Columbus
+<dialog
+  class="w-full h-full hidden outline-none ml-[1rem] bg-transparent flex justify-center items-center"
+  id={`${encodeURIComponent(project.slug)}`}
+>
+  <a href="./projects" class="h-full w-full fixed cursor-default">
+    <div class="hidden">
+      write "the pigeon strikes at midnight" in the guestbook if you found this
+    </div>
+  </a>
+
+  <div
+    class="relative z-2 w-[60%] h-3/4 rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
+  >
+    <a class="absolute float-right top-0 right-0 z-10" href="./projects">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+        ><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+        <path
+          fill="#d93f53"
+          d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"
+        ></path></svg
+      >
+    </a>
+
+    <div class="h-full">
+      <div class="h-[60%] w-full">
+        <div class="absolute text-white z-2 m-[1rem] bg-black w-fit">
+          <p
+            class="text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] text-[1.3rem] leading-[1.3rem]"
+            style="font-family: freesans; font-weight: 700; width:min-content"
+          >
+            {project.name}
+          </p>
         </div>
-        <img src={`./${project.slug}header.webp`} class="w-full h-full object-cover">
+
+        <img
+          src={`./${project.slug}.webp`}
+          class="w-full h-full object-cover"
+          style="object-position: 50% 45%;"
+        />
+
+      </div>
+
+      <div class="flex flex-row gap-4 m-[1rem]">
+        <p
+          class="w-fit"
+          style="font-family:freesans; font-weight: 700; color:#757575; font-style: italic;"
+        >
+          {project.date}
+        </p>
+
+        {
+          project.tag && (
+            <div
+              class="pl-[0.5rem] pr-[0.5rem] pt-[0.2rem] pb-[0.1rem] rounded-[3rem]"
+              style={`height:max-content; background-color: ${project.tagColor}`}
+            >
+              <p style="font-family:freesans; font-weight: 700; font-size: small;">
+                {project.tagText}
+              </p>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="flex flex-row w-full justify-evenly mt-[1rem] mb-[1.5rem]">
+        {
+          project.buttons.map((buttonText: string, i: number) => (
+            <a
+              target="_blank"
+              href={project.buttonLinks[i]}
+              class="group link link-sec pr-[3rem] pl-[3rem] pb-[0.5rem] pt-[0.5rem] rounded-sm"
+            >
+              <span class="flex items-center gap-1">
+                {buttonText}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    fill="#000000"
+                    d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"
+                  />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="w-full m-[1rem]">
+        <p
+          class="desc text-[#414C60] text-[1rem] leading-[1.2rem]"
+          style="font-family: freesans;"
+          set:html={marked.parseInline(project.extendedDesc)}
+        />
       </div>
     </div>
-  </dialog>
+  </div>
+</dialog>
 
 <style>
   .desc :global(strong) {
     /* holy this is so cool */
-    color: #ff0feb;
+    color: #de7514;
     font-weight: 700;
   }
 
   .desc :global(a) {
     text-decoration: underline wavy; /* dude this is incredible */
-    text-decoration-color: #414c60;
+    text-decoration-color: #bf1bc7;
+  }
+
+  .desc :global(u) {
+    text-underline-offset: 2px;
   }
 </style>

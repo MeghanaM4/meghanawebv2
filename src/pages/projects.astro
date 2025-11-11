@@ -124,7 +124,6 @@ import Footer from "../components/Footer.astro";
   </div>
 
   <script>
-
     let userFilter = "";
 
     function setFilter(filter: string) {
@@ -164,6 +163,15 @@ import Footer from "../components/Footer.astro";
           history.pushState("", document.title, window.location.pathname);
         }
       });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Escape") {
+        document.querySelectorAll("dialog").forEach((dialog) => {
+          dialog.classList.add("hidden");
+          dialog.close();
+        });
+      }
     });
   </script>
 </Layout>
