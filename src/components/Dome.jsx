@@ -81,12 +81,12 @@ function computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments) {
 
 export default function DomeGallery({
   images = DEFAULT_IMAGES,
-  fit = 1,
+  fit = 0.8,
   fitBasis = "auto",
-  minRadius = 700,
+  minRadius = 1000,
   maxRadius = Infinity,
-  padFactor = 0.25,
-  overlayBlurColor = "#060010",
+  padFactor = 0.5,
+  overlayBlurColor = "#c5ecfa",
   maxVerticalRotationDeg = DEFAULTS.maxVerticalRotationDeg,
   dragSensitivity = DEFAULTS.dragSensitivity,
   enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
@@ -120,7 +120,7 @@ export default function DomeGallery({
   const openStartedAtRef = useRef(0);
   const lastDragEndAt = useRef(0);
 
-  const scrollLockedRef = useRef(false);  
+  const scrollLockedRef = useRef(false);
   const lockScroll = useCallback(() => {
     if (scrollLockedRef.current) return;
     scrollLockedRef.current = true;
@@ -568,6 +568,11 @@ export default function DomeGallery({
     const mainR = mainRef.current?.getBoundingClientRect();
     const frameR = frameRef.current?.getBoundingClientRect();
 
+    console.log("frameR:", frameR);
+    console.log("mainR:", mainR);
+    console.log("frameR.top - mainR.top:", frameR.top - mainR.top);
+    console.log("Expected center:", mainR.height / 2);
+
     if (!mainR || !frameR || tileR.width <= 0 || tileR.height <= 0) {
       openingRef.current = false;
       focusedElRef.current = null;
@@ -589,6 +594,8 @@ export default function DomeGallery({
     const overlay = document.createElement("div");
     overlay.className = "enlarge";
     overlay.style.position = "absolute";
+
+    // Position overlay to match the frameRef initially
     overlay.style.left = frameR.left - mainR.left + "px";
     overlay.style.top = frameR.top - mainR.top + "px";
     overlay.style.width = frameR.width + "px";
@@ -709,7 +716,6 @@ export default function DomeGallery({
       transform: translateZ(calc(var(--radius) * -1));
       will-change: transform;
       position: absolute;
-      margin-bottom: 5rem;
     }
     
     .sphere-item {
@@ -739,6 +745,10 @@ export default function DomeGallery({
         height: auto !important;
         width: 100% !important;
       }
+    }
+
+    .viewer-frame {
+        margin: auto;
     }
     
     // body.dg-scroll-lock {
@@ -776,7 +786,7 @@ export default function DomeGallery({
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
       <div
         ref={rootRef}
-        className="sphere-root relative w-full h-full"
+        className="sphere-root absolute inset-0 w-full h-full"
         style={{
           ["--segments-x"]: segments,
           ["--segments-y"]: segments,
@@ -898,7 +908,7 @@ export default function DomeGallery({
 
           <div
             ref={viewerRef}
-            className="absolute inset-0 z-20 pointer-events-none flex items-center justify-center"
+            className="absolute inset-0 z-20 pointer-events-none grid place-items-center"
             style={{ padding: "var(--viewer-pad)" }}
           >
             <div
@@ -911,7 +921,7 @@ export default function DomeGallery({
             />
             <div
               ref={frameRef}
-              className="viewer-frame h-full aspect-square flex"
+              className="viewer-frame h-full aspect-square"
               style={{
                 borderRadius: `var(--enlarge-radius, ${openedImageBorderRadius})`,
               }}

@@ -8,7 +8,7 @@ const imgs = data.map((project) => "imgs/"  + project.slug + ".webp");
 ---
 
 <Layout>
-  <div class="flex flex-col">
+  <div class="fixed inset-0 w-screen h-screen">
     <Dome client:load images={imgs} />
   </div>
 </Layout>
