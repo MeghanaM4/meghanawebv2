@@ -1,24 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
-import Footer from "../components/Footer.astro"
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
   <div
     style="background-image: url('/noise.webp');"
-    class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-x-hidden w-screen h-screen"
+    class="inset-0 bg-center bg-no-repeat bg-cover overflow-x-hidden w-screen h-screen"
   >
     <p
       style="font-family:static"
-      class="absolute text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE] mt-[1rem] mb-[1rem]"
+      class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE] mt-[1rem] mb-[1rem]"
     >
       about
     </p>
 
-    <div
-      class="flex flex-col sm:flex-row items-center h-screen justify-center"
-    >
+    <div class="flex flex-col sm:flex-row justify-center items-center">
       <div class="ml-[2rem] mr-[2rem] bg-[#C4CDDE] p-[1rem] rounded-xl">
         <p
           style="font-family: freesans; font-weight: 700;"
@@ -37,7 +35,8 @@ import Footer from "../components/Footer.astro"
           >, and <a
             target="_blank"
             href="https://hackclub.com"
-            class="hover-underline text-[#1f1f1f]">hack club</a>
+            class="hover-underline text-[#1f1f1f]">hack club</a
+          >
           <br /><br />
           Right now, I'm finishing school and trying to <a
             href="./projects"
@@ -47,14 +46,14 @@ import Footer from "../components/Footer.astro"
       </div>
       <img
         title="me at the zion narrows (I'm looking at nothing)"
-        class="md:w-[30%] sm:w-[30%] w-[70%] m-[2rem]"
+        class="md:w-[30%] sm:w-[30%] w-[70%] mr-[2rem] ml-[2rem] mb-[2rem]"
         src="picture.jpg"
       />
     </div>
 
     <a
       href="./terminal"
-      class="fixed bottom-[1rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576] 
+      class="fixed bottom-[1rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576]
       ml-[1rem] z-5 flex items-center justify-center"
     >
       <svg
@@ -70,7 +69,8 @@ import Footer from "../components/Footer.astro"
       >
     </a>
 
-      <Footer/>
+    <div class="hidden lg:block">
+      <Footer />
+    </div>
   </div>
-
 </Layout>

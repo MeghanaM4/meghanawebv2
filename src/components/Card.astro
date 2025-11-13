@@ -11,7 +11,7 @@ import { marked } from "marked";
   >
     <div class="flex flex-row items-center">
       <div>
-        <img src={`./${project.slug}.webp`} />
+        <img src={`./imgs/${project.slug}.webp`} />
 
         <div class="flex flex-row items-center">
           <div class="ml-[0.7rem] w-full">
@@ -62,7 +62,7 @@ import { marked } from "marked";
                   <a
                     target="_blank"
                     href={project.buttonLinks[i]}
-                    class="group link link-main pr-[1.2rem] pl-[1.2rem] pb-[0.5rem] pt-[0.5rem] rounded-[0.5rem]"
+                    class="group link link-main text-[1.5rem] pr-[1.2rem] pl-[1.2rem] pb-[0.5rem] pt-[0.5rem] rounded-[0.5rem]"
                   >
                     <span class="flex items-center gap-1">
                       {buttonText}
@@ -124,7 +124,7 @@ import { marked } from "marked";
   </a>
 
   <div
-    class="relative z-2 w-[60%] h-3/4 rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
+    class="relative z-2 w-[95%] lg:w-[60%] h-1/2 lg:h-3/4 rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
   >
     <a class="absolute float-right top-0 right-0 z-10" href="./projects">
       <svg
@@ -141,10 +141,10 @@ import { marked } from "marked";
     </a>
 
     <div class="h-full">
-      <div class="h-[60%] w-full">
-        <div class="absolute text-white z-2 m-[1rem] bg-black w-fit">
+      <div class="h-[35%] md:h-[60%] w-full">
+        <div class="absolute text-white z-2 m-[1rem] w-fit">
           <p
-            class="text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] text-[1.3rem] leading-[1.3rem]"
+            class="text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] hidden md:text-[1.3rem] leading-[1.3rem]"
             style="font-family: freesans; font-weight: 700; width:min-content"
           >
             {project.name}
@@ -152,14 +152,23 @@ import { marked } from "marked";
         </div>
 
         <img
-          src={`./${project.slug}.webp`}
+          src={`./imgs/${project.slug}.webp`}
           class="w-full h-full object-cover"
           style="object-position: 50% 45%;"
         />
-
       </div>
 
-      <div class="flex flex-row gap-4 m-[1rem]">
+      <div class="flex flex-row gap-4 m-[1rem] items-center">
+        <!-- only show on mobile -->
+        <div class="w-fit">
+          <p
+            class="w-fit text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] text-[1.3rem] md:hidden leading-[1.3rem]"
+            style="font-family: freesans; font-weight: 700"
+          >
+            {project.name}
+          </p>
+        </div>
+
         <p
           class="w-fit"
           style="font-family:freesans; font-weight: 700; color:#757575; font-style: italic;"
@@ -187,9 +196,9 @@ import { marked } from "marked";
             <a
               target="_blank"
               href={project.buttonLinks[i]}
-              class="group link link-sec pr-[3rem] pl-[3rem] pb-[0.5rem] pt-[0.5rem] rounded-sm"
+              class="group link link-sec text-[1.2rem] md:text-[1.5rem] pr-[1rem] pl-[1rem] md:pr-[3rem] md:pl-[3rem] pb-[0.5rem] mt-[1rem] lg:mt-[0rem] pt-[0.5rem] rounded-sm"
             >
-              <span class="flex items-center gap-1">
+              <span class="flex h-min items-center gap-1">
                 {buttonText}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path
@@ -205,7 +214,7 @@ import { marked } from "marked";
 
       <div class="w-full m-[1rem]">
         <p
-          class="desc text-[#414C60] text-[1rem] leading-[1.2rem]"
+          class="desc w-fit text-[#414C60] mr-[1.5rem] lg:mr-[0rem] text-[1rem] leading-[1.2rem] h-[4rem]"
           style="font-family: freesans;"
           set:html={marked.parseInline(project.extendedDesc)}
         />

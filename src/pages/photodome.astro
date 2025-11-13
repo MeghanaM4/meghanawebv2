@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Dome from "../components/Dome.jsx";
+import data from "../data/projects.json";
+import Footer from "../components/Footer.astro";
+
+const imgs = data.map((project) => "imgs/"  + project.slug + ".webp");
+---
+
+<Layout>
+  <div class="flex flex-col">
+    <Dome client:load images={imgs} />
+  </div>
+</Layout>
