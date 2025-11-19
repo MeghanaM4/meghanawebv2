@@ -1,14 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Dome from "../components/Dome.jsx";
-import data from "../data/projects.json";
-import Footer from "../components/Footer.astro";
 
-const imgs = data.map((project) => "imgs/"  + project.slug + ".webp");
+const imgs = await Astro.glob('../photodome/*.webp');
+const imgPaths = imgs.map(img => img.default.src);
 ---
 
 <Layout>
   <div class="fixed inset-0 w-screen h-screen">
-    <Dome client:load images={imgs} />
+    <Dome client:load images={imgPaths} />
   </div>
 </Layout>
