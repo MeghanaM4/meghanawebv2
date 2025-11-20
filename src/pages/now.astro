@@ -1,0 +1,231 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import "../styles/now.css";
+import Nowevent from "../components/Nowevent.astro";
+import data from "../data/events.json";
+---
+
+<Layout>
+  <div
+    style="background-image: url('/noise.webp');"
+    class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-hidden w-screen h-screen"
+  >
+    <p
+      style="font-family:static"
+      class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE] mt-[1rem] mb-[1rem] fixed top-0 left-0 z-20"
+    >
+      now
+    </p>
+
+    <a
+      href="./terminal"
+      class="fixed bottom-[1rem] left-[0.5rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576]
+      ml-[1rem] z-20 flex items-center justify-center"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="32"
+        width="32"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="#FFFFFF"
+          d="M4.4 7.4L6.8 4h2.5L7.2 7h6.3a6.5 6.5 0 0 1 0 13H9l1-2h3.5a4.5 4.5 0 1 0 0-9H7.2l2.1 3H6.8L4.4 8.6L4 8z"
+        ></path>
+      </svg>
+    </a>
+
+    <div class="timeline-line"></div>
+
+    <div id="timeline-container" class="w-full h-full relative">
+        {data.map((nowevent) => <Nowevent nowevent={nowevent} />)}
+    </div>
+
+    <div
+      class="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-[#C4CDDE] flex items-center gap-2 z-20"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path fill="#C4CDDE" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6l-6 6z"
+        ></path>
+      </svg>
+      <p style="  font-size: 0.9rem;">
+        scroll or use arrow keys
+      </p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path fill="#C4CDDE" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  let currentIndex = 0;
+  const events = document.querySelectorAll(".timeline-event");
+  const dots = document.querySelectorAll(".timeline-dot");
+  const totalEvents = events.length;
+  let lastScrollTime = 0;
+  const SCROLL_COOLDOWN = 350;
+
+  function updateEventPositions(
+    direction: "up" | "down" | "instant" = "instant"
+  ) {
+    events.forEach((event, i) => {
+      event.classList.remove(
+        "active",
+        "prev",
+        "next",
+        "scrolling-up",
+        "scrolling-down",
+        "from-active",
+        "to-active"
+      );
+
+      if (direction !== "instant") {
+        if (i === currentIndex - 1 && direction === "down") {
+          event.classList.add("scrolling-down", "from-active");
+        } else if (i === currentIndex && direction === "down") {
+          event.classList.add("scrolling-down", "to-active");
+        } else if (i === currentIndex + 1 && direction === "up") {
+          event.classList.add("scrolling-up", "from-active");
+        } else if (i === currentIndex && direction === "up") {
+          event.classList.add("scrolling-up", "to-active");
+        } else if (i === currentIndex - 1) {
+          event.classList.add("scrolling-" + direction);
+        } else if (i === currentIndex + 1) {
+          event.classList.add("scrolling-" + direction);
+        }
+      }
+
+      if (i === currentIndex) {
+        setTimeout(
+          () => {
+            event.classList.add("active");
+            event.classList.remove(
+              "scrolling-up",
+              "scrolling-down",
+              "from-active",
+              "to-active"
+            );
+          },
+          direction === "instant" ? 0 : 300
+        );
+      } else if (i === currentIndex - 1) {
+        setTimeout(
+          () => {
+            event.classList.add("prev");
+            event.classList.remove(
+              "scrolling-up",
+              "scrolling-down",
+              "from-active",
+              "to-active"
+            );
+          },
+          direction === "instant" ? 0 : 300
+        );
+      } else if (i === currentIndex + 1) {
+        setTimeout(
+          () => {
+            event.classList.add("next");
+            event.classList.remove(
+              "scrolling-up",
+              "scrolling-down",
+              "from-active",
+              "to-active"
+            );
+          },
+          direction === "instant" ? 0 : 300
+        );
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  function showEvent(
+    index: number,
+    direction: "up" | "down" | "instant" = "instant"
+  ) {
+    if (index < 0 || index >= totalEvents) return;
+
+    currentIndex = index;
+    updateEventPositions(direction);
+  }
+
+  function nextEvent() {
+    if (currentIndex < totalEvents - 1) {
+      showEvent(currentIndex + 1, "down");
+    }
+  }
+
+  function prevEvent() {
+    if (currentIndex > 0) {
+      showEvent(currentIndex - 1, "up");
+    }
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastScrollTime >= SCROLL_COOLDOWN) {
+        nextEvent();
+        lastScrollTime = now;
+      }
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastScrollTime >= SCROLL_COOLDOWN) {
+        prevEvent();
+        lastScrollTime = now;
+      }
+    }
+  });
+
+  document.addEventListener('wheel', (e) => {
+    const now = Date.now();
+    if (now - lastScrollTime < SCROLL_COOLDOWN) return;
+    
+    lastScrollTime = now;
+
+    if (e.deltaY > 0) {
+      nextEvent();
+    } else {
+      prevEvent();
+    }
+  }, { passive: true });
+
+  // Add click handlers to timeline events
+  events.forEach((event, index) => {
+    event.addEventListener("click", () => {
+      if (event.classList.contains("prev")) {
+        prevEvent();
+      } else if (event.classList.contains("next")) {
+        nextEvent();
+      }
+    });
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      const direction =
+        index > currentIndex ? "down" : index < currentIndex ? "up" : "instant";
+      showEvent(index, direction);
+    });
+  });
+
+  showEvent(0, "instant");
+</script>

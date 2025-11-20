@@ -1,0 +1,23 @@
+---
+import "../styles/global.css";
+import "../styles/now.css";
+const { nowevent } = Astro.props;
+import { marked } from "marked";
+---
+
+<div class="timeline-event active" data-index="0">
+  <div class="glass-box">
+    <p class="event-date">
+      {nowevent.date}
+    </p>
+    <h2 class="event-title">{nowevent.title}</h2>
+    <p class="event-description" set:html={marked.parseInline(nowevent.desc)} />
+    <div class="event-tags">
+      {
+        nowevent.tags.map((tag: string, i: number) => (
+          <span class="tag">{tag}</span>
+        ))
+      }
+    </div>
+  </div>
+</div>

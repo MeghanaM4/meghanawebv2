@@ -1,0 +1,250 @@
+.timeline-line {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #c4cdde 15%,
+    #c4cdde 85%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.timeline-event {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.timeline-event.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.timeline-event.prev {
+  opacity: 0.4;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 3;
+  transform: translate(-50%, calc(-50% - 50vh)) scale(0.9);
+}
+
+.timeline-event.next {
+  opacity: 0.4;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 3;
+  transform: translate(-50%, calc(-50% + 50vh)) scale(0.9);
+}
+
+.timeline-event.scrolling-down {
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.timeline-event.scrolling-down.from-active {
+  animation: slideDownFromActive 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.timeline-event.scrolling-down.to-active {
+  animation: slideDownToActive 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.timeline-event.scrolling-up {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.timeline-event.scrolling-up.from-active {
+  animation: slideUpFromActive 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.timeline-event.scrolling-up.to-active {
+  animation: slideUpToActive 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideDownFromActive {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, calc(-50% - 50vh)) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+@keyframes slideDownToActive {
+  from {
+    transform: translate(-50%, calc(-50% + 50vh)) scale(0.9);
+    opacity: 0.4;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, calc(-50% + 100vh)) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, calc(-50% + 50vh)) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+@keyframes slideUpFromActive {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, calc(-50% + 50vh)) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+@keyframes slideUpToActive {
+  from {
+    transform: translate(-50%, calc(-50% - 50vh)) scale(0.9);
+    opacity: 0.4;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, calc(-50% - 100vh)) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, calc(-50% - 50vh)) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+.glass-box {
+  background: rgba(196, 205, 222, 0.06);
+  border: 1px solid #c4cdde;
+  border-radius: 1rem;
+  padding: 3rem;
+  max-width: 55rem;
+  width: 90%;
+  height: 50vh;
+  max-height: 20rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.glass-box::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fdc576;
+  border: 3px solid #c4cdde;
+  border-radius: 50%;
+  left: -30px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+
+.active .glass-box::before {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 20px rgba(253, 197, 118, 0.6);
+}
+
+.glass-box:hover {
+  background: rgba(196, 205, 222, 0.15);
+  transform: translateX(10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.event-date {
+  color: #fdc576;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  font-family: instrument;
+}
+
+.event-title {
+  color: #c4cdde;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-family: freesans;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.event-description {
+  color: #c4cdde;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-family: lunchtype;
+}
+
+.event-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: rgba(253, 197, 118, 0.1);
+  border: 2px solid #fdc576;
+  color: #fdc576;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+  font-family: freesans;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(196, 205, 222, 0.3);
+  border: 2px solid #c4cdde;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.timeline-dot:hover {
+  transform: scale(1.3);
+  background: rgba(196, 205, 222, 0.5);
+}
+
+.timeline-dot.active {
+  background: #fdc576;
+  border-color: #fdc576;
+  transform: scale(1.5);
+}

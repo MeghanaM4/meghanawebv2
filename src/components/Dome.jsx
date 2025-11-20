@@ -408,8 +408,8 @@ export default function DomeGallery({
       animatingOverlay.className = "enlarge-closing";
       animatingOverlay.style.cssText = `
         position: absolute;
-        left: 50vw;
-        top: 20vh;
+        left: ${overlayRelativeToRoot.left}px;
+        top: ${overlayRelativeToRoot.top}px;
         width: ${overlayRelativeToRoot.width}px;
         height: ${overlayRelativeToRoot.height}px;
         z-index: 9999;
@@ -580,7 +580,12 @@ export default function DomeGallery({
     overlay.className = "enlarge";
     overlay.style.position = "absolute";
 
-    // Position overlay to match the frameRef initially
+    // Position overlay to match the frameRef initially (place overlay at
+    // the same top/left as the frame so transform translate(tx0,ty0)
+    // positions it relative to the frame). This makes the opening
+    // animation originate from the clicked tile.
+    overlay.style.left = frameR.left - mainR.left + "px";
+    overlay.style.top = frameR.top - mainR.top + "px";
     overlay.style.width = frameR.width + "px";
     overlay.style.height = frameR.height + "px";
     overlay.style.opacity = "0";
@@ -638,7 +643,7 @@ export default function DomeGallery({
         overlay.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease, width ${enlargeTransitionMs}ms ease, height ${enlargeTransitionMs}ms ease`;
         requestAnimationFrame(() => {
           overlay.style.left = `25vw`;
-          overlay.style.top = `30vh}`;
+          overlay.style.top = `30vh`;
           overlay.style.width = tempWidth;
           overlay.style.height = tempHeight;
         });

@@ -8,7 +8,6 @@
     "tag": true,
     "tagColor": "#C7B363",
     "tagText": "FAVORITE",
-    "numButtons": 3,
     "buttons": ["3D model", "git repo"],
     "buttonLinks": [
       "https://a360.co/42Ld6s0s",
@@ -22,7 +21,6 @@
     "slug": "daydream",
     "description": "I helped run a simultaneous hackathon in 100 cities all over the world, hosted by teenagers for teenagers. I was in charge of global operations, meaning I had to make sure every single event actually ran.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "jul - sep 2025",
     "tag": true,
     "tagColor": "#C7B363",
@@ -42,7 +40,6 @@
     "description": "I brought 50 teenagers from all over my city to participate in a useless-invention hackathon. I got sponsors, generated interest, planned out logistics, and lost a lot of sleep.",
     "extendedDesc": "I brought **50 teenagers** from <u> all over my city</u> to participate in a [useless-invention hackathon](https://scrapyard.hackclub.com/columbus). I got sponsors, generated interest, planned out logistics, and lost a lot of sleep. I started planning in January, with Hack Club’s announcement that they would be running a global, simultaneous hackathon organized by teenagers in cities all over the world. I cold-emailed tons of companies trying to get sponsorships, reached out to a ton of organizations attempting to get a venue for free, and emailed hundreds of teachers trying to generate interest for a hackathon in a city without a bustling tech scene or teenagers who are motivated to build cool stuff.     <br />     <br /> Scrapyard Columbus partnered with OHI/O, The Ohio State University’s hackathon organization, and a huge thank you to Cal King for taking a chance on me. In the end, 50 teenagers all across my hometown of Columbus, Ohio showed up, I raised $3k in sponsorship money, and everyone walked out with awesome merch and a project they were proud of.",
     "date": "jan - mar 2025",
-    "tag": false,
     "buttons": ["site", "gallery"],
     "buttonLinks": [
       "https://scrapyard.hackclub.com/columbus",
@@ -56,7 +53,6 @@
     "slug": "undercity",
     "description": "I helped run the largest hardware hackathon for teenagers, hosted at Github HQ with 180 high schoolers from all over the world. Everyone there had to qualify by making amazing projects, and it was the coolest thing ever.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "jul 2025",
     "tag": true,
     "tagColor": "#C7B363",
@@ -74,9 +70,7 @@
     "slug": "TTTC",
     "description": "A trash can that insults you whenever you use it. We crowd-sourced insults from fellow hackers and got them to say mean stuff into a microphone, then rigged a bunch of servo motors to make the most inconvenient trash can ever.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "mar 2025",
-    "tag": false,
     "buttons": ["demo", "git repo"],
     "buttonLinks": [
       "https://youtu.be/JxGyt0A78mU",
@@ -90,9 +84,7 @@
     "slug": "zucktest",
     "description": "A website to test your knowledge on my favorite movie of all time, The Social Network (2010)",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "may - jun 2025",
-    "tag": false,
     "buttons": ["site", "git repo"],
     "buttonLinks": [
       "https://zucktest.onrender.com/",
@@ -106,9 +98,7 @@
     "slug": "wonderwalle",
     "description": "A guitar-strumming robot that acts as an autolooper. Its metronome mode also dances while you play and helps keep tempo.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "apr 2025",
-    "tag": false,
     "buttons": ["demo", "git repo", "devpost"],
     "buttonLinks": [
       "https://www.youtube.com/watch?v=eZwgar4Enxg",
@@ -123,9 +113,7 @@
     "slug": "pathfinder",
     "description": "I ran a program for 100 teenagers all over the world, where if they made a custom PCB controller board and efidget, they got the money and parts to build it.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "jun - oct 2025",
-    "tag": false,
     "buttons": ["site", "git repo", "project gallery"],
     "buttonLinks": [
       "https://pathfinder.hackclub.com",
@@ -140,9 +128,7 @@
     "slug": "odyssey",
     "description": "As part of Hack Club's Apex event, a high altitude balloon payload collecting pressure, gyro, and magnetometer data.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "apr - jun 2025",
-    "tag": false,
     "buttons": ["git repo"],
     "buttonLinks": ["https://github.com/MeghanaM4/odyssey"],
     "filters": ["favorites", "projects", "hack club", "hardware"]
@@ -153,9 +139,7 @@
     "slug": "optica",
     "description": "A way for the blind/visually impaired to experience the world through computer vision.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "sep 2024",
-    "tag": false,
     "buttons": ["git repo", "devpost"],
     "buttonLinks": [
       "https://github.com/ddiyas/OpticaV2",
@@ -169,9 +153,7 @@
     "slug": "hermes",
     "description": "I ran another program for even more teenagers all over the world, where if they made a PCB with an on-board sensor to transmit data via I2C, they got the money to build it.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "jun - jul 2025",
-    "tag": false,
     "buttons": ["site", "git repo", "project gallery"],
     "buttonLinks": [
       "https://hermes.hackclub.com",
@@ -186,9 +168,7 @@
     "slug": "autorob",
     "description": "A way for the blind/visually impaired to experience the world through computer vision.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "sep 2024",
-    "tag": false,
     "buttons": ["demo", "git repo"],
     "buttonLinks": [
       "https://hc-cdn.hel1.your-objectstorage.com/s/v3/f453f3565a13283371f4fcb7ffa93f84a36ad261_vid-20231107-wa0001_3_.mp4",
@@ -202,9 +182,7 @@
     "slug": "tuliptrack",
     "description": "Measures the tremors of Parkinson's patients and relays data to doctors to allow for 24/7 monitoring.",
     "extendedDesc": "**extended description coming soon**",
-
     "date": "feb 2025",
-    "tag": false,
     "buttons": ["git repo", "devpost"],
     "buttonLinks": [
       "https://github.com/ddiyas/OpticaV2",
