@@ -1,29 +1,36 @@
 [
     {
-        "title": "title",
-        "desc": "desc",
-        "date": "date",
-        "tags": ["tag 1", "tag 2", "tag 3"]
+        "title": "currently: working on my new website!",
+        "desc": "completely revamping my website (and finally learning real web dev). Astro is my way of putting off learning React and Next, but #weball.",
+        "date": "oct - nov 2025",
+        "tags": ["lowkey webdev is fire", "until you try centering something", "I still don't understand ::after"]
     },
 
     {
-        "title": "title",
-        "desc": "desc",
-        "date": "date",
-        "tags": ["tag 1", "tag 2"]
+        "title": "hack club's parthenon in new york",
+        "desc": "spent the week in nyc running the largest hackathon for teenage girls in the world. 150 girls came from 14 different countries for a 3-day hackathon in Manhattan, and I saw some of the coolest projects I've ever seen. It was awesome meeting so many different people from all over, some at the beginning of their engineering journeys. Mega cool.",
+        "date": "nov 14-16 2025",
+        "tags": ["video coming soon!","we carried 17 gallons of dunkin donuts hot chocolate across times square"]
     },
 
     {
-        "title": "title",
-        "desc": "desc",
-        "date": "date",
-        "tags": ["tag 1", "tag 2", "tag 3"]
+        "title": "running daydream: a simultaneous hackathon in 100 cities",
+        "desc": "running global operations for [daydream](https://daydream.hackclub.com), a hackathon happening in 100 cities all around the world at the same time. Run by teenagers. What operations means is that basically I'm in charge of making sure every event actually happens. I've literally had 31912038 meetings in the past two months.",
+        "date": "jul - sep 2025",
+        "tags": ["teenagers are so cool man", "meghana learned airtable"]
     },
 
     {
-        "title": "title",
-        "desc": "desc",
-        "date": "date",
-        "tags": ["tag 1"]
+        "title": "visiting family in india",
+        "desc": "2 weeks in india with the family, so glad to be back. indian weddings are no joke.",
+        "date": "aug 2025",
+        "tags": ["I wish teleportation was real"]
+    },
+
+    {
+        "title": "hack club internship in vermont",
+        "desc": "flew out to burlington to work at [hack club](https://hackclub.com) and it was awesome. Dude meeting cool people is awesome. I ran the [pathfinder](https://pathfinder.hackclub.com) and [hermes](https://hermes.hackclub.com) programs",
+        "date": "jun - jul 2025",
+        "tags": ["Jumped off a waterfall #balling", "Didn't think there was a town smaller than Columbus"]
     }
 ]

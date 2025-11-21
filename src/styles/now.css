@@ -1,9 +1,9 @@
 .timeline-line {
   position: fixed;
-  left: 50%;
+  right: 50%;
   top: 0;
   bottom: 0;
-  width: 3px;
+  width: 4px;
   background: linear-gradient(
     to bottom,
     transparent 0%,
@@ -13,7 +13,7 @@
   );
   transform: translateX(-50%);
   z-index: 1;
-  opacity: 0.3;
+  opacity: 0.1;
 }
 
 .timeline-event {
@@ -146,11 +146,10 @@
   background: rgba(196, 205, 222, 0.06);
   border: 1px solid #c4cdde;
   border-radius: 1rem;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 55rem;
   width: 90%;
-  height: 50vh;
-  max-height: 20rem;
+  height: fit-content;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.1s ease;
   position: relative;
@@ -189,6 +188,8 @@
   margin-bottom: 0.5rem;
   font-style: italic;
   font-family: instrument;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
 }
 
 .event-title {
@@ -208,6 +209,7 @@
   line-height: 1.6;
   margin-bottom: 1.5rem;
   font-family: lunchtype;
+  line-height: 1.6rem;
 }
 
 .event-tags {

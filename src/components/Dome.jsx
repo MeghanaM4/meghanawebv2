@@ -92,8 +92,8 @@ export default function DomeGallery({
   enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
   segments = DEFAULTS.segments,
   dragDampening = 1.5,
-  openedImageWidth = "50vw",
-  openedImageHeight = "50vh",
+  openedImageWidth = "40vw",
+  openedImageHeight = "70vh",
   imageBorderRadius = "30px",
   openedImageBorderRadius = "10px",
   grayscale = false,
@@ -124,12 +124,16 @@ export default function DomeGallery({
   const lockScroll = useCallback(() => {
     if (scrollLockedRef.current) return;
     scrollLockedRef.current = true;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     document.body.classList.add("dg-scroll-lock");
   }, []);
   const unlockScroll = useCallback(() => {
     if (!scrollLockedRef.current) return;
     if (rootRef.current?.getAttribute("data-enlarging") === "true") return;
     scrollLockedRef.current = false;
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
     document.body.classList.remove("dg-scroll-lock");
   }, []);
 
@@ -371,8 +375,10 @@ export default function DomeGallery({
       const overlay = viewerRef.current?.querySelector(".enlarge");
       if (!overlay) return;
 
-      const refDiv = parent.querySelector(".item__image--reference");
+      const captionBox = viewerRef.current?.querySelector(".image-caption-box");
+      if (captionBox) captionBox.remove();
 
+      const refDiv = parent.querySelector(".item__image--reference");
       const originalPos = originalTilePositionRef.current;
       if (!originalPos) {
         overlay.remove();
@@ -474,8 +480,11 @@ export default function DomeGallery({
                 if (
                   !draggingRef.current &&
                   rootRef.current?.getAttribute("data-enlarging") !== "true"
-                )
+                ) {
+                  document.body.style.overflow = "";
+                  document.documentElement.style.overflow = "";
                   document.body.classList.remove("dg-scroll-lock");
+                }
               }, 300);
             });
           });
@@ -493,11 +502,9 @@ export default function DomeGallery({
     };
     window.addEventListener("keydown", onKey);
 
-    // Close when clicking/tapping outside the enlarged overlay
     const onPointerDownOutside = (ev) => {
       const overlayEl = viewerRef.current?.querySelector(".enlarge");
       if (!overlayEl) return;
-      // If click is inside the overlay, ignore
       if (overlayEl.contains(ev.target)) return;
       close();
     };
@@ -580,10 +587,7 @@ export default function DomeGallery({
     overlay.className = "enlarge";
     overlay.style.position = "absolute";
 
-    // Position overlay to match the frameRef initially (place overlay at
-    // the same top/left as the frame so transform translate(tx0,ty0)
-    // positions it relative to the frame). This makes the opening
-    // animation originate from the clicked tile.
+    
     overlay.style.left = frameR.left - mainR.left + "px";
     overlay.style.top = frameR.top - mainR.top + "px";
     overlay.style.width = frameR.width + "px";
@@ -595,10 +599,12 @@ export default function DomeGallery({
     overlay.style.transition = `transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease`;
     overlay.style.borderRadius = openedImageBorderRadius;
     overlay.style.overflow = "hidden";
-    overlay.style.boxShadow = "0 10px 30px rgba(0,0,0,.35)";
+    overlay.style.boxShadow = "0 30px 30px rgba(0,0,0,.7)";
+    overlay.style.border = "8px solid #e8e8e8ff"; 
 
     const rawSrc = parent.dataset.src || el.querySelector("img")?.src || "";
     const rawAlt = parent.dataset.alt || el.querySelector("img")?.alt || "";
+
     const img = document.createElement("img");
     img.src = rawSrc;
     img.alt = rawAlt;
@@ -624,6 +630,37 @@ export default function DomeGallery({
       overlay.style.opacity = "1";
       overlay.style.transform = "translate(0px, 0px) scale(1, 1)";
       rootRef.current?.setAttribute("data-enlarging", "true");
+
+      const captionBox = document.createElement("div");
+      captionBox.className = "image-caption-box";
+      captionBox.style.cssText = `
+        position: absolute;
+        left: ${frameR.left - mainR.left + frameR.width + 20}px;
+        top: ${frameR.top - mainR.top}px;
+        width: 300px;
+        height: auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        color: #333;
+        padding: 24px;
+        font-size: 15px;
+        line-height: 1.6;
+        border-radius: ${openedImageBorderRadius};
+        box-shadow: 0 10px 30px rgba(0,0,0,.2);
+        z-index: 30;
+        opacity: 0;
+        transition: opacity ${enlargeTransitionMs}ms ease;
+        pointer-events: auto;
+        font-family: freesans;
+      `;
+      captionBox.textContent = rawAlt || "No caption yet";
+      viewerRef.current.appendChild(captionBox);
+
+      setTimeout(() => {
+        if (captionBox.parentElement) {
+          captionBox.style.opacity = "1";
+        }
+      }, 50);
     }, 16);
 
     const wantsResize = openedImageWidth || openedImageHeight;
@@ -642,10 +679,18 @@ export default function DomeGallery({
         void overlay.offsetWidth;
         overlay.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease, width ${enlargeTransitionMs}ms ease, height ${enlargeTransitionMs}ms ease`;
         requestAnimationFrame(() => {
-          overlay.style.left = `25vw`;
-          overlay.style.top = `30vh`;
+          overlay.style.left = `30vw`;
+          overlay.style.top = `15vh`;
           overlay.style.width = tempWidth;
           overlay.style.height = tempHeight;
+
+          const captionBox =
+            viewerRef.current?.querySelector(".image-caption-box");
+          if (captionBox) {
+            captionBox.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease`;
+            captionBox.style.left = `calc(30vw + ${tempWidth} + 20px)`;
+            captionBox.style.top = `15vh`;
+          }
         });
         const cleanupSecond = () => {
           overlay.removeEventListener("transitionend", cleanupSecond);
@@ -662,6 +707,8 @@ export default function DomeGallery({
   useEffect(() => {
     return () => {
       document.body.classList.remove("dg-scroll-lock");
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, []);
 
@@ -674,6 +721,10 @@ export default function DomeGallery({
       --rot-x: calc((360deg / var(--segments-y)) / 2);
       --item-width: calc(var(--circ) / var(--segments-x));
       --item-height: calc(var(--circ) / var(--segments-y));
+    }
+    
+    body, html {
+      overflow: hidden !important;
     }
     
     .sphere-root * {
