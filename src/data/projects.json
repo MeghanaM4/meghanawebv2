@@ -185,8 +185,8 @@
     "date": "feb 2025",
     "buttons": ["git repo", "devpost"],
     "buttonLinks": [
-      "https://github.com/ddiyas/OpticaV2",
-      "https://devpost.com/software/optica-gar7hw"
+      "https://github.com/gzhu725/TulipTrack",
+      "https://devpost.com/software/tuliptrack"
     ],
     "filters": ["projects", "hardware"]
   }
