@@ -653,7 +653,9 @@ export default function DomeGallery({
         pointer-events: auto;
         font-family: freesans;
       `;
-      captionBox.textContent = rawAlt || "meghana has forgotten to write a caption. This was probably really cool though. Woah! So cool.";
+      captionBox.textContent =
+        rawAlt ||
+        "meghana has forgotten to write a caption. This was probably really cool though. Woah! So cool.";
       viewerRef.current.appendChild(captionBox);
 
       setTimeout(() => {
@@ -670,41 +672,41 @@ export default function DomeGallery({
         overlay.removeEventListener("transitionend", onFirstEnd);
         const prevTransition = overlay.style.transition;
         overlay.style.transition = "none";
-        
+
         const imgEl = overlay.querySelector("img");
         const maxWidth = window.innerWidth * 0.5;
         const maxHeight = window.innerHeight * 0.8;
-        
+
         let finalWidth = imgEl.naturalWidth;
         let finalHeight = imgEl.naturalHeight;
-        
+
         if (finalWidth > maxWidth || finalHeight > maxHeight) {
           const widthRatio = maxWidth / finalWidth;
           const heightRatio = maxHeight / finalHeight;
           const scale = Math.min(widthRatio, heightRatio);
-          
+
           finalWidth = finalWidth * scale;
           finalHeight = finalHeight * scale;
         }
-        
+
         overlay.style.width = frameR.width + "px";
         overlay.style.height = frameR.height + "px";
         void overlay.offsetWidth;
         overlay.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease, width ${enlargeTransitionMs}ms ease, height ${enlargeTransitionMs}ms ease`;
-        
+
         imgEl.style.objectFit = "cover";
-        
+
         requestAnimationFrame(() => {
           const captionBox =
             viewerRef.current?.querySelector(".image-caption-box");
-          
+
           const captionWidth = 300;
           const gap = 20;
-          
+
           const totalWidth = finalWidth + gap + captionWidth;
-          
-          const groupLeft = (window.innerWidth - totalWidth) / 3 * 2;
-          
+
+          const groupLeft = ((window.innerWidth - totalWidth) / 3) * 2;
+
           overlay.style.left = `${groupLeft}px`;
           overlay.style.top = `calc(50vh - ${finalHeight / 2}px)`;
           overlay.style.width = `${finalWidth}px`;
