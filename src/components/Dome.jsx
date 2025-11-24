@@ -93,7 +93,7 @@ export default function DomeGallery({
   segments = DEFAULTS.segments,
   dragDampening = 1.5,
   openedImageWidth = "40vw",
-  openedImageHeight = "70vh",
+  openedImageHeight = "90vh",
   imageBorderRadius = "30px",
   openedImageBorderRadius = "10px",
   grayscale = false,
@@ -432,7 +432,7 @@ export default function DomeGallery({
       const originalImg = overlay.querySelector("img");
       if (originalImg) {
         const img = originalImg.cloneNode();
-        img.style.cssText = "width: 100%; height: 100%; object-fit: cover;";
+        img.style.cssText = "width: 100%; height: 100%; object-contain: cover;";
         animatingOverlay.appendChild(img);
       }
 
@@ -587,7 +587,6 @@ export default function DomeGallery({
     overlay.className = "enlarge";
     overlay.style.position = "absolute";
 
-    
     overlay.style.left = frameR.left - mainR.left + "px";
     overlay.style.top = frameR.top - mainR.top + "px";
     overlay.style.width = frameR.width + "px";
@@ -600,7 +599,7 @@ export default function DomeGallery({
     overlay.style.borderRadius = openedImageBorderRadius;
     overlay.style.overflow = "hidden";
     overlay.style.boxShadow = "0 30px 30px rgba(0,0,0,.7)";
-    overlay.style.border = "8px solid #e8e8e8ff"; 
+    overlay.style.border = "8px solid #e8e8e8ff";
 
     const rawSrc = parent.dataset.src || el.querySelector("img")?.src || "";
     const rawAlt = parent.dataset.alt || el.querySelector("img")?.alt || "";
@@ -639,11 +638,12 @@ export default function DomeGallery({
         top: ${frameR.top - mainR.top}px;
         width: 300px;
         height: auto;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(50, 50, 50, 0.95);
         backdrop-filter: blur(10px);
-        color: #333;
+        color: #f3952aff;
         padding: 24px;
         font-size: 15px;
+        font-weight: bold;
         line-height: 1.6;
         border-radius: ${openedImageBorderRadius};
         box-shadow: 0 10px 30px rgba(0,0,0,.2);
@@ -653,7 +653,7 @@ export default function DomeGallery({
         pointer-events: auto;
         font-family: freesans;
       `;
-      captionBox.textContent = rawAlt || "No caption yet";
+      captionBox.textContent = rawAlt || "meghana has forgotten to write a caption. This was probably really cool though. Woah! So cool.";
       viewerRef.current.appendChild(captionBox);
 
       setTimeout(() => {
@@ -670,26 +670,50 @@ export default function DomeGallery({
         overlay.removeEventListener("transitionend", onFirstEnd);
         const prevTransition = overlay.style.transition;
         overlay.style.transition = "none";
-        const tempWidth = openedImageWidth || `${frameR.width}px`;
-        const tempHeight = openedImageHeight || `${frameR.height}px`;
-        overlay.style.width = tempWidth;
-        overlay.style.height = tempHeight;
+        
+        const imgEl = overlay.querySelector("img");
+        const maxWidth = window.innerWidth * 0.5;
+        const maxHeight = window.innerHeight * 0.8;
+        
+        let finalWidth = imgEl.naturalWidth;
+        let finalHeight = imgEl.naturalHeight;
+        
+        if (finalWidth > maxWidth || finalHeight > maxHeight) {
+          const widthRatio = maxWidth / finalWidth;
+          const heightRatio = maxHeight / finalHeight;
+          const scale = Math.min(widthRatio, heightRatio);
+          
+          finalWidth = finalWidth * scale;
+          finalHeight = finalHeight * scale;
+        }
+        
         overlay.style.width = frameR.width + "px";
         overlay.style.height = frameR.height + "px";
         void overlay.offsetWidth;
         overlay.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease, width ${enlargeTransitionMs}ms ease, height ${enlargeTransitionMs}ms ease`;
+        
+        imgEl.style.objectFit = "cover";
+        
         requestAnimationFrame(() => {
-          overlay.style.left = `30vw`;
-          overlay.style.top = `15vh`;
-          overlay.style.width = tempWidth;
-          overlay.style.height = tempHeight;
-
           const captionBox =
             viewerRef.current?.querySelector(".image-caption-box");
+          
+          const captionWidth = 300;
+          const gap = 20;
+          
+          const totalWidth = finalWidth + gap + captionWidth;
+          
+          const groupLeft = (window.innerWidth - totalWidth) / 3 * 2;
+          
+          overlay.style.left = `${groupLeft}px`;
+          overlay.style.top = `calc(50vh - ${finalHeight / 2}px)`;
+          overlay.style.width = `${finalWidth}px`;
+          overlay.style.height = `${finalHeight}px`;
+
           if (captionBox) {
             captionBox.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease`;
-            captionBox.style.left = `calc(30vw + ${tempWidth} + 20px)`;
-            captionBox.style.top = `15vh`;
+            captionBox.style.left = `${groupLeft + finalWidth + gap}px`;
+            captionBox.style.top = `calc(50vh - ${finalHeight / 2}px)`;
           }
         });
         const cleanupSecond = () => {
@@ -893,7 +917,7 @@ export default function DomeGallery({
                       src={it.src}
                       draggable={false}
                       alt={it.alt}
-                      className="w-full h-full object-fill pointer-events-none"
+                      className="w-full h-full object-contain pointer-events-none"
                       style={{
                         backfaceVisibility: "hidden",
                         filter: `var(--image-filter, ${

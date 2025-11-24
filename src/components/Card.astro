@@ -126,18 +126,8 @@ import { marked } from "marked";
   <div
     class="relative z-2 w-[95%] lg:w-[60%] h-1/2 lg:h-3/4 rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
   >
-    <a class="absolute float-right top-0 right-0 z-10 exit">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        ><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
-        <path
-          fill="#d93f53"
-          d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"
-        ></path></svg
-      >
+    <a class="absolute float-right top-0 right-0 z-10 exit m-[0.5rem]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="#de7514" d="m10 15.4l-5.9 5.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L8.6 14H5q-.425 0-.712-.288T4 13t.288-.712T5 12h6q.425 0 .713.288T12 13v6q0 .425-.288.713T11 20t-.712-.288T10 19zm5.4-5.4H19q.425 0 .713.288T20 11t-.288.713T19 12h-6q-.425 0-.712-.288T12 11V5q0-.425.288-.712T13 4t.713.288T14 5v3.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7z"/></svg>
     </a>
 
     <div class="h-full">
@@ -218,7 +208,7 @@ import { marked } from "marked";
           style="font-family: freesans;"
           set:html={marked.parseInline(project.extendedDesc)}
         />
-      </div>
+      </div>  
     </div>
   </div>
 </dialog>
