@@ -87,7 +87,7 @@
     "date": "may - jun 2025",
     "buttons": ["site", "git repo"],
     "buttonLinks": [
-      "https://zucktest.up.railway.app",
+      "https://zucktest.koyeb.app",
       "https://github.com/MeghanaM4/zucktest"
     ],
     "filters": ["favorites", "projects"]
