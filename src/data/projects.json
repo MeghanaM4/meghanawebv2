@@ -140,8 +140,9 @@
     "description": "A way for the blind/visually impaired to experience the world through computer vision.",
     "extendedDesc": "**extended description coming soon**",
     "date": "sep 2024",
-    "buttons": ["git repo", "devpost"],
+    "buttons": ["demo", "git repo", "devpost"],
     "buttonLinks": [
+      "https://www.youtube.com/watch?v=ZD9LP6MjzG8",
       "https://github.com/ddiyas/OpticaV2",
       "https://devpost.com/software/optica-gar7hw"
     ],
