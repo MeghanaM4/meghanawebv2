@@ -53,7 +53,7 @@ import Footer from "../components/Footer.astro";
         <div class="mr-2 flex flex-row items-center slide">
           <div
             style="font-family: lunchtype;"
-            class="bg bg-black opacity-50 h-full w-fit text-white p-2 rounded-md text-right"
+            class="bg bg-black opacity-50 h-full w-fit text-white p-2 rounded-md text-right pointer-events-none"
           >
             filter projects!
           </div>
@@ -108,6 +108,65 @@ import Footer from "../components/Footer.astro";
   </div>
 
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      openModal();
+
+      document
+        .querySelectorAll(".exit-button, .exit-backdrop")
+        .forEach((el) => {
+          el.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
+          });
+        });
+    });
+
+    function openModal() {
+      console.log("function executing");
+      const hash = decodeURIComponent(window.location.hash.substring(1));
+      console.log(hash);
+
+      document.querySelectorAll("dialog").forEach((dialog) => {
+        if (dialog.id !== hash) {
+          dialog.close();
+        }
+      });
+
+      const modal = document.getElementById(hash) as HTMLDialogElement;
+      modal.showModal();
+    }
+
+    function closeModal() {
+      document.querySelectorAll("dialog").forEach((dialog) => {
+        dialog.close();
+      });
+
+      if (window.location.hash) {
+        history.pushState(
+          "",
+          document.title,
+          window.location.pathname + window.location.search
+        );
+      }
+    }
+
+    window.addEventListener("hashchange", openModal);
+
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      dialog.addEventListener("close", () => {
+        if (window.location.hash === `#${dialog.id}`) {
+          history.pushState("", document.title, window.location.pathname);
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+
     let userFilters = [""];
     const buttons = document.querySelectorAll("[data-filter]");
     const cards = document.querySelectorAll("[data-filters]");
@@ -172,43 +231,6 @@ import Footer from "../components/Footer.astro";
           }
         });
       });
-    });
-
-    function openModal() {
-      const hash = window.location.hash.substring(1);
-      console.log(hash);
-      document.querySelectorAll("dialog").forEach((dialog) => {
-        dialog.close();
-        dialog.classList.add("hidden");
-      });
-      if (hash) {
-        const modal = document.getElementById(hash) as HTMLDialogElement;
-        if (modal) {
-          modal.showModal();
-          modal.classList.remove("hidden");
-        }
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", openModal);
-
-    window.addEventListener("hashchange", openModal);
-
-    document.querySelectorAll("dialog").forEach((dialog) => {
-      dialog.addEventListener("close", () => {
-        if (window.location.hash === `#${dialog.id}`) {
-          history.pushState("", document.title, window.location.pathname);
-        }
-      });
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.code === "Escape") {
-        document.querySelectorAll("dialog").forEach((dialog) => {
-          dialog.classList.add("hidden");
-          dialog.close();
-        });
-      }
     });
   </script>
 </Layout>

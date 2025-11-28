@@ -5,7 +5,11 @@ const { project } = Astro.props;
 import { marked } from "marked";
 ---
 
-<div id={project.slug} data-filters={project.filters} class="project-wrapper z-1 relative inline-block mb-[3rem]">
+<div
+  data-id={project.slug}
+  data-filters={project.filters}
+  class="project-wrapper z-1 relative inline-block mb-[3rem]"
+>
   <div
     class="project dither bg-[#D9D9D9] w-full max-w-[24rem] mx-auto overflow-hidden rounded-lg border border-solid border-[#C4CDDE] border-[0.4rem] break-inside-avoid inline-block"
   >
@@ -114,101 +118,114 @@ import { marked } from "marked";
 </div>
 
 <dialog
-  class="w-full h-full hidden outline-none ml-[1rem] bg-transparent flex justify-center items-center"
+  class="w-full h-full outline-none ml-[1rem] bg-transparent"
   id={`${encodeURIComponent(project.slug)}`}
 >
-  <a class="exit h-full w-full fixed cursor-default">
+  <div class="flex justify-center items-center w-full h-full">
+    <a class="exit-backdrop absolute inset-0 cursor-default"></a>
     <div class="hidden">
       write "the pigeon strikes at midnight" in the guestbook if you found this
     </div>
-  </a>
 
-  <div
-    class="relative z-2 w-[95%] lg:w-[70%] h-1/2 lg:h-3/4 rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
-  >
-    <a class="absolute float-right top-0 right-0 z-10 exit m-[0.5rem] cursor-pointer hover:bg-white p-[0.25rem] rounded-xl transition ease">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="#de7514" d="m10 15.4l-5.9 5.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L8.6 14H5q-.425 0-.712-.288T4 13t.288-.712T5 12h6q.425 0 .713.288T12 13v6q0 .425-.288.713T11 20t-.712-.288T10 19zm5.4-5.4H19q.425 0 .713.288T20 11t-.288.713T19 12h-6q-.425 0-.712-.288T12 11V5q0-.425.288-.712T13 4t.713.288T14 5v3.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7z"/></svg>
-    </a>
-
-    <div class="h-full">
-      <div class="h-[35%] md:h-[60%] w-full">
-        <div class="absolute text-white z-2 m-[1rem] w-fit">
-          <p
-            class="text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] hidden md:text-[1.3rem] leading-[1.3rem]"
-            style="font-family: freesans; font-weight: 700; width:min-content"
-          >
-            {project.name}
-          </p>
-        </div>
-
-        <img
-          src={`./imgs/projectimgs/${project.slug}.webp`}
-          class="w-full h-full object-cover"
-          style="object-position: 50% 45%;"
-        />
-      </div>
-
-      <div class="flex flex-row gap-4 m-[1rem] items-center">
-        <!-- only show on mobile -->
-        <div class="w-fit">
-          <p
-            class="w-fit text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] text-[1.3rem] md:hidden leading-[1.3rem]"
-            style="font-family: freesans; font-weight: 700"
-          >
-            {project.name}
-          </p>
-        </div>
-
-        <p
-          class="w-fit"
-          style="font-family:freesans; font-weight: 700; color:#757575; font-style: italic;"
+    <div
+      class="relative z-2 w-[95%] lg:w-[70%] h-1/2 lg:h-3/4 rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
+    >
+      <button
+        class="exit-button absolute float-right top-0 right-0 z-10 exit m-[0.5rem] cursor-pointer hover:bg-white p-[0.25rem] rounded-xl transition ease"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          ><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+          <path
+            fill="#de7514"
+            d="m10 15.4l-5.9 5.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7L8.6 14H5q-.425 0-.712-.288T4 13t.288-.712T5 12h6q.425 0 .713.288T12 13v6q0 .425-.288.713T11 20t-.712-.288T10 19zm5.4-5.4H19q.425 0 .713.288T20 11t-.288.713T19 12h-6q-.425 0-.712-.288T12 11V5q0-.425.288-.712T13 4t.713.288T14 5v3.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7z"
+          ></path></svg
         >
-          {project.date}
-        </p>
+      </button>
 
-        {
-          project.tag && (
-            <div
-              class="pl-[0.5rem] pr-[0.5rem] pt-[0.2rem] pb-[0.1rem] rounded-[3rem]"
-              style={`height:max-content; background-color: ${project.tagColor}`}
+      <div class="h-full">
+        <div class="h-[35%] md:h-[60%] w-full">
+          <div class="absolute text-white z-2 m-[1rem] w-fit">
+            <p
+              class="text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] hidden md:text-[1.3rem] leading-[1.3rem]"
+              style="font-family: freesans; font-weight: 700; width:min-content"
             >
-              <p style="font-family:freesans; font-weight: 700; font-size: small;">
-                {project.tagText}
-              </p>
-            </div>
-          )
-        }
-      </div>
+              {project.name}
+            </p>
+          </div>
 
-      <div class="flex flex-row w-full justify-evenly mt-[1rem] mb-[1.5rem]">
-        {
-          project.buttons.map((buttonText: string, i: number) => (
-            <a
-              target="_blank"
-              href={project.buttonLinks[i]}
-              class="group link link-sec text-[1.2rem] md:text-[1.5rem] pr-[1rem] pl-[1rem] md:pr-[3rem] md:pl-[3rem] pb-[0.5rem] mt-[1rem] lg:mt-[0rem] pt-[0.5rem] rounded-sm"
+          <img
+            src={`./imgs/projectimgs/${project.slug}.webp`}
+            class="w-full h-full object-cover"
+            style="object-position: 50% 45%;"
+          />
+        </div>
+
+        <div class="flex flex-row gap-4 m-[1rem] items-center">
+          <!-- only show on mobile -->
+          <div class="w-fit">
+            <p
+              class="w-fit text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] text-[1.3rem] md:hidden leading-[1.3rem]"
+              style="font-family: freesans; font-weight: 700"
             >
-              <span class="flex h-min items-center gap-1">
-                {buttonText}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path
-                    fill="#000000"
-                    d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"
-                  />
-                </svg>
-              </span>
-            </a>
-          ))
-        }
-      </div>
+              {project.name}
+            </p>
+          </div>
 
-      <div class="w-full m-[1rem]">
-        <p
-          class="desc w-fit text-[#414C60] mr-[1.5rem] lg:mr-[0rem] text-[1rem] leading-[1.2rem] h-[4rem]"
-          style="font-family: freesans;"
-          set:html={marked.parseInline(project.extendedDesc)}
-        />
-      </div>  
+          <p
+            class="w-fit"
+            style="font-family:freesans; font-weight: 700; color:#757575; font-style: italic;"
+          >
+            {project.date}
+          </p>
+
+          {
+            project.tag && (
+              <div
+                class="pl-[0.5rem] pr-[0.5rem] pt-[0.2rem] pb-[0.1rem] rounded-[3rem]"
+                style={`height:max-content; background-color: ${project.tagColor}`}
+              >
+                <p style="font-family:freesans; font-weight: 700; font-size: small;">
+                  {project.tagText}
+                </p>
+              </div>
+            )
+          }
+        </div>
+
+        <div class="flex flex-row w-full justify-evenly mt-[1rem] mb-[1.5rem]">
+          {
+            project.buttons.map((buttonText: string, i: number) => (
+              <a
+                target="_blank"
+                href={project.buttonLinks[i]}
+                class="group link link-sec text-[1.2rem] md:text-[1.5rem] pr-[1rem] pl-[1rem] md:pr-[3rem] md:pl-[3rem] pb-[0.5rem] mt-[1rem] lg:mt-[0rem] pt-[0.5rem] rounded-sm"
+              >
+                <span class="flex h-min items-center gap-1">
+                  {buttonText}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      fill="#000000"
+                      d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"
+                    />
+                  </svg>
+                </span>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="w-full m-[1rem]">
+          <p
+            class="desc w-fit text-[#414C60] mr-[1.5rem] lg:mr-[0rem] text-[1rem] leading-[1.2rem] h-[4rem]"
+            style="font-family: freesans;"
+            set:html={marked.parseInline(project.extendedDesc)}
+          />
+        </div>
+      </div>
     </div>
   </div>
 </dialog>
@@ -229,26 +246,3 @@ import { marked } from "marked";
     text-underline-offset: 2px;
   }
 </style>
-
-<script>
-  function closeModal() {
-    const hash = window.location.hash.substring(1);
-    console.log(hash);
-    document.querySelectorAll("dialog").forEach((dialog) => {
-      dialog.close();
-      dialog.classList.add("hidden");
-    });
-
-    if (window.location && window.location.hash) {
-      history.replaceState(
-        null,
-        "",
-        window.location.pathname + window.location.search
-      );
-    }
-  }
-
-  document.querySelectorAll(".exit").forEach((el) => {
-    el.addEventListener("click", (e) => closeModal());
-  });
-</script>
