@@ -50,15 +50,17 @@ import Footer from "../components/Footer.astro";
         </label> -->
 
       <div class="flex flex-row pl-[5%] items-center">
-        <div class="mr-2 flex flex-row items-center">
+        <div class="mr-2 flex flex-row items-center slide">
           <div
             style="font-family: lunchtype;"
             class="bg bg-black opacity-50 h-full w-fit text-white p-2 rounded-md text-right"
           >
             filter projects!
           </div>
-          <div class="border border-[0.5rem] border-r-transparent border-t-transparent border-b-transparent border-black/50 ">
-
+          <!-- woah a triangle this is so cool -->
+          <div
+            class="border border-[0.5rem] border-r-transparent border-t-transparent border-b-transparent border-black/50"
+          >
           </div>
         </div>
 
@@ -140,16 +142,33 @@ import Footer from "../components/Footer.astro";
         cards.forEach((card) => {
           let cardFilters = (card as HTMLElement).dataset.filters;
           const cardFiltersArray = cardFilters ? cardFilters.split(",") : []; //this is some wizardry
+          const cardElement = card as HTMLElement;
 
-          if (
+          const shouldShow =
             cardFiltersArray.some((i) => userFilters.includes(i)) ||
-            userFilters.includes("all")
-          ) {
-            (card as HTMLElement).style.display = "block";
-            //console.log(`set ${card.id} to block`);
-          } else {
-            (card as HTMLElement).style.display = "none";
-            //console.log(`set ${card.id} to none`);
+            userFilters.includes("all");
+
+          const isCurrentlyVisible =
+            !cardElement.classList.contains("card-hidden");
+
+          if (shouldShow && !isCurrentlyVisible) {
+            cardElement.classList.remove("card-hidden", "card-hiding");
+            cardElement.style.display = "block";
+            void cardElement.offsetWidth;
+            cardElement.classList.add("card-showing");
+
+            setTimeout(() => {
+              cardElement.classList.remove("card-showing");
+            }, 400);
+          } else if (!shouldShow && isCurrentlyVisible) {
+            cardElement.classList.remove("card-showing");
+            cardElement.classList.add("card-hiding");
+
+            setTimeout(() => {
+              cardElement.classList.add("card-hidden");
+              cardElement.classList.remove("card-hiding");
+              cardElement.style.display = "none";
+            }, 400);
           }
         });
       });

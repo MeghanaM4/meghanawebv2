@@ -208,7 +208,6 @@ import data from "../data/events.json";
     }
   }, { passive: true });
 
-  // Add click handlers to timeline events
   events.forEach((event, index) => {
     event.addEventListener("click", () => {
       if (event.classList.contains("prev")) {
