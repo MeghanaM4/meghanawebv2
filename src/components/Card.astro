@@ -5,7 +5,7 @@ const { project } = Astro.props;
 import { marked } from "marked";
 ---
 
-<div class="project-wrapper z-1 relative inline-block mb-[3rem]">
+<div id={project.slug} data-filters={project.filters} class="project-wrapper z-1 relative inline-block mb-[3rem]">
   <div
     class="project dither bg-[#D9D9D9] w-full max-w-[24rem] mx-auto overflow-hidden rounded-lg border border-solid border-[#C4CDDE] border-[0.4rem] break-inside-avoid inline-block"
   >

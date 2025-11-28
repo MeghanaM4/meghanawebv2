@@ -12,16 +12,15 @@ import Footer from "../components/Footer.astro";
     style="background-image: url('/noise.webp');"
     class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-y-auto overflow-x-hidden"
   >
-    <div>
-      <div class="pt-2 flex items-center">
-        <p
-          style="font-family:static"
-          class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE]"
-        >
-          projects
-        </p>
+    <div class="pt-2 items-center flex flex-row justify-between w-full pr-8">
+      <p
+        style="font-family:static"
+        class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE]"
+      >
+        projects
+      </p>
 
-        <!-- 
+      <!-- 
         // From Uiverse.io by alexruix
         <label
           class="absolute top-0 right-8 h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
@@ -50,45 +49,28 @@ import Footer from "../components/Footer.astro";
           </p>
         </label> -->
 
+      <div class="flex flex-row pl-[5%] items-center">
+        <div class="mr-2 flex flex-row items-center">
+          <div
+            style="font-family: lunchtype;"
+            class="bg bg-black opacity-50 h-full w-fit text-white p-2 rounded-md text-right"
+          >
+            filter projects!
+          </div>
+          <div class="border border-[0.5rem] border-r-transparent border-t-transparent border-b-transparent border-black/50 ">
+
+          </div>
+        </div>
+
         <div
-          class="flex flex-wrap text-right text-balance pl-[20%] pr-8 text-[#C4CDDE] text-[1.5em] gap-[0.4em]"
+          class="flex flex-wrap text-right text-balance text-[#C4CDDE] text-[1.5em] gap-[0.4em]"
           style="font-family:lunchtype; font-weight: 700;"
         >
-          <p
-            id="projects"
-            onclick="setFilter('projects')"
-            class="hover-underline"
-          >
-            all projects
-          </p>
-          <p
-            id="favorites"
-            onclick="setFilter('favorites')"
-            class="hover-underline"
-          >
-            favorites
-          </p>
-          <p
-            id="hack club"
-            onclick="setFilter('hack club')"
-            class="hover-underline"
-          >
-            hack club
-          </p>
-          <p
-            id="hardware"
-            onclick="setFilter('hardware')"
-            class="hover-underline"
-          >
-            hardware
-          </p>
-          <p
-            id="hackathons"
-            onclick="setFilter('hackathons')"
-            class="hover-underline"
-          >
-            hackathons
-          </p>
+          <p data-filter="all" class="hover-underline">all projects</p>
+          <p data-filter="favorites" class="hover-underline">favorites</p>
+          <p data-filter="hack club" class="hover-underline">hack club</p>
+          <p data-filter="hardware" class="hover-underline">hardware</p>
+          <p data-filter="hackathons" class="hover-underline">hackathons</p>
         </div>
       </div>
     </div>
@@ -111,7 +93,7 @@ import Footer from "../components/Footer.astro";
       >
     </a>
 
-    <div class="flex w-screen items-center justify-center mt-4 px-4">
+    <div class="flex w-screen items-center justify-center mt-4 px-4 mb-[5rem]">
       <div
         id="card-container"
         class="columns-1 md:columns-2 lg:columns-3 gap-[3rem] w-full max-w-[90%] mx-auto"
@@ -124,18 +106,54 @@ import Footer from "../components/Footer.astro";
   </div>
 
   <script>
-    let userFilter = "";
+    let userFilters = [""];
+    const buttons = document.querySelectorAll("[data-filter]");
+    const cards = document.querySelectorAll("[data-filters]");
 
-    function setFilter(filter: string) {
-      userFilter = filter;
-    }
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = (btn as HTMLElement).dataset.filter || "";
 
-    // function populateCards(filter: string) {
-    //   const cardContainer = document.getElementById('card-container');
-    //   cardContainer.innerHTML = {data.filter((projects) => projects.filters.includes(filter))
-    //     .map((project) => <Card project={project} />)
-    //   }
-    // }
+        if (filter == "all") {
+          //I feel like there's definitely a way to make this better but this is working so...
+          userFilters = ["all"];
+        } else if (filter != "all" && userFilters.includes("all")) {
+          userFilters = userFilters.filter((i) => i !== "all");
+          userFilters = [filter];
+        } else if (userFilters.includes(filter)) {
+          userFilters = userFilters.filter((i) => i !== filter); //all these filters are getting confusing
+        } else {
+          userFilters.push(filter);
+        }
+        console.log(userFilters);
+
+        buttons.forEach((btn) => {
+          btn.classList.remove("selected");
+          btn.classList.add("hover-underline");
+
+          if (userFilters.includes(btn.getAttribute("data-filter") || "")) {
+            btn.classList.add("selected");
+            btn.classList.remove("hover-underline");
+          }
+        });
+
+        cards.forEach((card) => {
+          let cardFilters = (card as HTMLElement).dataset.filters;
+          const cardFiltersArray = cardFilters ? cardFilters.split(",") : []; //this is some wizardry
+
+          if (
+            cardFiltersArray.some((i) => userFilters.includes(i)) ||
+            userFilters.includes("all")
+          ) {
+            (card as HTMLElement).style.display = "block";
+            //console.log(`set ${card.id} to block`);
+          } else {
+            (card as HTMLElement).style.display = "none";
+            //console.log(`set ${card.id} to none`);
+          }
+        });
+      });
+    });
 
     function openModal() {
       const hash = window.location.hash.substring(1);

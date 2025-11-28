@@ -31,7 +31,7 @@
       "https://www.youtube.com/watch?v=vvdoW2gh9YU",
       "https://photos.app.goo.gl/YWUDFypSSjiddSW2A"
     ],
-    "filters": ["favorites", "hack club", "hackathons"]
+    "filters": ["hack club", "hackathons"]
   },
 
   {
@@ -54,9 +54,6 @@
     "description": "I helped run the largest hardware hackathon for teenagers, hosted at Github HQ with 180 high schoolers from all over the world. Everyone there had to qualify by making amazing projects, and it was the coolest thing ever.",
     "extendedDesc": "**extended description coming soon**",
     "date": "jul 2025",
-    "tag": true,
-    "tagColor": "#C7B363",
-    "tagText": "NEW",
     "buttons": ["video", "project gallery"],
     "buttonLinks": [
       "https://www.youtube.com/watch?v=kaEFv7e49mo&",
@@ -90,7 +87,7 @@
       "https://zucktest.koyeb.app",
       "https://github.com/MeghanaM4/zucktest"
     ],
-    "filters": ["favorites", "projects"]
+    "filters": ["projects"]
   },
 
   {
@@ -161,7 +158,7 @@
       "https://github.com/MeghanaM4/hermes",
       "https://hermes.hackclub.com/gallery"
     ],
-    "filters": ["favorites", "projects", "hack club", "hardware"]
+    "filters": ["projects", "hack club", "hardware"]
   },
 
   {
