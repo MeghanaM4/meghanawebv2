@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Dome from "../components/Dome.jsx";
 import data from "../data/photodome.json";
+import "../styles/global.css";
 
 const imgs = data.map((img) => ({
   src: `../photodome/${img.src}.webp`,
@@ -11,9 +12,16 @@ const imgs = data.map((img) => ({
 
 <Layout>
   <div class="fixed inset-0 w-screen h-screen">
+    <p
+      style="font-family:static !important; z-index: 10000; position: fixed; margin-left: 1rem; letter-spacing: 0.7rem; color:#c4cdde; font-size: 4em;"
+    >
+      photodome
+    </p>
+
     <Dome client:load images={imgs} />
   </div>
-  
+
+
   <a
     href="./terminal"
     style="position: fixed !important; bottom: 1rem !important; left: 1rem !important; z-index: 10000 !important; background-color: #FDC576 !important; border-radius: 5rem; width:3rem; aspect-ratio: 1/1; align-items: center; display: flex; justify-content: center;"

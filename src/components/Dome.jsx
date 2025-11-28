@@ -88,7 +88,7 @@ export default function DomeGallery({
   minRadius = 900,
   maxRadius = Infinity,
   padFactor = 0.5,
-  overlayBlurColor = "#c5ecfa",
+  overlayBlurColor = "rgba(0, 0, 0, 0.7)",
   maxVerticalRotationDeg = DEFAULTS.maxVerticalRotationDeg,
   dragSensitivity = DEFAULTS.dragSensitivity,
   enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
@@ -965,6 +965,19 @@ export default function DomeGallery({
             className="absolute left-0 right-0 bottom-0 h-[120px] z-[5] pointer-events-none"
             style={{
               background: `linear-gradient(to bottom, transparent, var(--overlay-blur-color, ${overlayBlurColor}))`,
+            }}
+          />
+
+          <div
+            className="absolute top-0 bottom-0 left-0 w-[120px] z-[5] pointer-events-none rotate-180"
+            style={{
+              background: `linear-gradient(to right, transparent, var(--overlay-blur-color, ${overlayBlurColor}))`,
+            }}
+          />
+          <div
+            className="absolute top-0 bottom-0 right-0 w-[120px] z-[5] pointer-events-none  rotate-180"
+            style={{
+              background: `linear-gradient(to left, transparent, var(--overlay-blur-color, ${overlayBlurColor}))`,
             }}
           />
 
