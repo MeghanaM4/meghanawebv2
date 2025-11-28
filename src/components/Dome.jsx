@@ -1,3 +1,5 @@
+// from https://reactbits.dev/components/dome-gallery
+
 import { useEffect, useMemo, useRef, useCallback } from "react";
 import { useGesture } from "@use-gesture/react";
 
