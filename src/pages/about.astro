@@ -2,21 +2,50 @@
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
+import Terminal from "../components/Terminal.astro";
+
+export const prerender = false; // Not needed in 'server' mode
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const command = data.get("input");
+    if(command === "back") {  
+      return Astro.redirect("/terminal");
+    } else if (command === "exit") {
+      return Astro.redirect("/");
+    } else if (command === "sudo rm -rf /*") {
+      console.log("you think you're funny, don't you?");
+    }
+
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
 ---
+
+<html>
+  <head>
+    <title>meghana.co - about</title>
+  </head>
+</html>
 
 <Layout>
   <div
     style="background-image: url('/noise.webp');"
-    class="inset-0 bg-center bg-no-repeat bg-cover overflow-x-hidden w-screen h-screen"
+    class="inset-0 bg-center bg-no-repeat bg-cover overflow-x-hidden w-full overflow-h-auto"
   >
-    <p
+    <a
+      href="./terminal"
       style="font-family:static"
       class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE] mt-[1rem] mb-[1rem]"
     >
       about
-    </p>
+    </a>
 
-    <div class="flex flex-col sm:flex-row justify-center items-center">
+    <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
       <div class="ml-[2rem] mr-[2rem] bg-[#C4CDDE] p-[1rem] rounded-xl">
         <p
           style="font-family: freesans; font-weight: 700;"
@@ -51,26 +80,11 @@ import Footer from "../components/Footer.astro";
       />
     </div>
 
-    <a
-      href="./terminal"
-      class="fixed bottom-[1rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576]
-      ml-[1rem] z-5 flex items-center justify-center"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="32"
-        width="32"
-        viewBox="0 0 24 24"
-        ><!-- Icon from NRK Core Icons by Norsk rikskringkasting - https://creativecommons.org/licenses/by/4.0/ -->
-        <path
-          fill="#FFFFFF"
-          d="M4.4 7.4L6.8 4h2.5L7.2 7h6.3a6.5 6.5 0 0 1 0 13H9l1-2h3.5a4.5 4.5 0 1 0 0-9H7.2l2.1 3H6.8L4.4 8.6L4 8z"
-        ></path></svg
-      >
-    </a>
+    <Terminal />
 
     <div class="hidden lg:block">
       <Footer />
     </div>
   </div>
+
 </Layout>
