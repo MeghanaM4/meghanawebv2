@@ -7,8 +7,6 @@ import data from "../data/projects.json";
 import Footer from "../components/Footer.astro";
 import Terminal from "../components/Terminal.astro";
 
-export const prerender = false; // Not needed in 'server' mode
-
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();

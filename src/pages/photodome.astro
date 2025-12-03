@@ -5,8 +5,6 @@ import data from "../data/photodome.json";
 import "../styles/global.css";
 import Terminal from "../components/Terminal.astro";
 
-export const prerender = false; // Not needed in 'server' mode
-
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();

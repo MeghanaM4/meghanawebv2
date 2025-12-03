@@ -6,8 +6,6 @@ import Nowevent from "../components/Nowevent.astro";
 import data from "../data/events.json";
 import Terminal from "../components/Terminal.astro";
 
-export const prerender = false; // Not needed in 'server' mode
-
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
