@@ -4,13 +4,13 @@ import "../styles/global.css";
 import "../styles/terminal.css";
 import Termy from "../components/Terminal.astro";
 
-const pages = ["about", "projects", "contact", "now", "photodome"];
-//document.querySelectorAll("headings").forEach(element => pages.push(element.innerHTML)); //holy crap I am a javascript mastermind. edit: frick I can't use it cause document doesn't exist in frontmatter but I'm keeping this anyway because I'm proud of it.
+const pages = ["about", "projects", "contact", "now", "photodome", "terminal"];
+//document.querySelectorAll("headings").forEach(element => pages.push(element.innerHTML)); //I can't use this code cause document doesn't exist in frontmatter but I'm keeping this anyway because I'm proud of it.
 
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
-    const command = data.get("input") as string;
+    const command = data.get("input") as String;
 
     console.log(command);
 
@@ -19,6 +19,7 @@ if (Astro.request.method === "POST") {
 
     } else if (pages.find((element) => command.toLowerCase() === "cd " + element)) { //I am a wizard.
       return Astro.redirect("/" + pages.find(element => command.toLowerCase() === ("cd " + element)));
+
     } else if (command === "sudo rm -rf /*") {
       console.log("you think you're funny, don't you?");
     }

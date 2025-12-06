@@ -11,14 +11,13 @@ if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
     const command = data.get("input");
-    if(command === "back") {  
+    if (command === "back") {
       return Astro.redirect("/terminal");
     } else if (command === "exit") {
       return Astro.redirect("/");
     } else if (command === "sudo rm -rf /*") {
       console.log("you think you're funny, don't you?");
     }
-
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -39,12 +38,12 @@ if (Astro.request.method === "POST") {
     class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-y-auto overflow-x-hidden"
   >
     <div class="pt-2 items-center flex flex-row justify-between w-full pr-8">
-      <p
+      <a href="./terminal"
         style="font-family:static"
         class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE]"
       >
         projects
-      </p>
+      </a>
 
       <!-- 
         // From Uiverse.io by alexruix
@@ -129,7 +128,7 @@ if (Astro.request.method === "POST") {
         {data.map((project) => <Card project={project} />)}
       </div>
     </div>
-    <Terminal/>
+    <Terminal />
 
     <Footer />
   </div>

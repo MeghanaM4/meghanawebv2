@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
 
-const { placeholder = "type back to return to terminal", noBack = "" } = Astro.props;
+const { placeholder = "type back to return to terminal", noBack = "" } =
+  Astro.props;
 ---
 
 <a
@@ -27,7 +28,7 @@ const { placeholder = "type back to return to terminal", noBack = "" } = Astro.p
   class="hidden lg:flex fixed bottom-[1rem] h-[3rem] w-fit bg-[#FDC576]
       ml-[1rem] z-5 items-center rounded-[3rem] hover:!opacity-100 transition-opacity"
 >
-  <form method="POST" action={Astro.url.pathname} autocomplete="off">
+  <form method="POST" action={Astro.url.pathname} autocomplete="off" enctype="application/x-www-form-urlencoded">
     <input
       type="text"
       name="input"
@@ -40,7 +41,6 @@ const { placeholder = "type back to return to terminal", noBack = "" } = Astro.p
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-
     let pos = window.scrollY;
 
     window.addEventListener("scroll", () => {

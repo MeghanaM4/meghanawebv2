@@ -12,8 +12,10 @@ if (Astro.request.method === "POST") {
     const command = data.get("input");
     if(command === "back") {  
       return Astro.redirect("/terminal");
+          
     } else if (command === "exit") {
       return Astro.redirect("/");
+
     } else if (command === "sudo rm -rf /*") {
       console.log("you think you're funny, don't you?");
     }
@@ -37,12 +39,12 @@ if (Astro.request.method === "POST") {
     style="background-image: url('/noise.webp');"
     class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-hidden w-screen h-screen"
   >
-    <p
+    <p onclick="window.location.href='terminal'"
       style="font-family:static"
-      class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE] mt-[1rem] mb-[1rem] fixed top-0 left-0 z-20"
+      class="text-[4em] cursor-pointer tracking-[0.7rem] pl-8 text-[#C4CDDE] mt-[1rem] mb-[1rem] fixed top-0 left-0 z-20"
     >
       now
-    </p>
+</p>
 
     <a
       href="./terminal"
