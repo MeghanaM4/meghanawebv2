@@ -187,5 +187,18 @@
       "https://devpost.com/software/tuliptrack"
     ],
     "filters": ["projects", "hardware"]
+  },
+  {
+    "name": "Arcus",
+    "slug": "arcus",
+    "description": "A PCB name badge I made for Hack Club's Parthenon, uses an RP2040 and an ePaper display.",
+    "extendedDesc": "**extended description coming soon**",
+    "date": "nov 2025",
+    "tag": true,
+    "tagColor": "#C7B363",
+    "tagText": "NEW",
+    "buttons": ["git repo"],
+    "buttonLinks": ["https://github.com/meghanam4/arcus"],
+    "filters": ["projects", "hardware", "hack club"]
   }
 ]
