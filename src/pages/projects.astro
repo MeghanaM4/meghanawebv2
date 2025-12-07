@@ -38,7 +38,8 @@ if (Astro.request.method === "POST") {
     class="fixed inset-0 bg-center bg-no-repeat bg-cover overflow-y-auto overflow-x-hidden"
   >
     <div class="pt-2 items-center flex flex-row justify-between w-full pr-8">
-      <a href="./terminal"
+      <a
+        href="./terminal"
         style="font-family:static"
         class="text-[4em] tracking-[0.7rem] pl-8 text-[#C4CDDE]"
       >
@@ -128,8 +129,8 @@ if (Astro.request.method === "POST") {
         {data.map((project) => <Card project={project} />)}
       </div>
     </div>
-    <Terminal />
 
+    <Terminal />
     <Footer />
   </div>
 
