@@ -13,7 +13,7 @@ if (Astro.request.method === "POST") {
     const command = data.get("input") as String;
 
     console.log(command);
-
+    
     if (command.toLowerCase() === "exit") {
       return Astro.redirect("/");
 
