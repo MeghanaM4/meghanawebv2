@@ -200,5 +200,15 @@
     "buttons": ["git repo"],
     "buttonLinks": ["https://github.com/meghanam4/arcus"],
     "filters": ["projects", "hardware", "hack club"]
+  },
+  {
+    "name": "MADPAD",
+    "slug": "madpad",
+    "description": "A custom Macropad using a XIAO RP2040 that has 9 keys, an OLED screen, and a rotatary encoder. The first PCB I ever made.",
+    "extendedDesc": "**extended description coming soon**",
+    "date": "oct 2024",
+    "buttons": ["git repo"],
+    "buttonLinks": ["https://github.com/hackclub/hackpad/tree/main/hackpads/madpad"],
+    "filters": ["projects", "hardware", "hack club"]
   }
 ]
