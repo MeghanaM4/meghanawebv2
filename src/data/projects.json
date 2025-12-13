@@ -8,9 +8,10 @@
     "tag": true,
     "tagColor": "#C7B363",
     "tagText": "FAVORITE",
-    "buttons": ["3D model", "git repo"],
+    "buttons": ["3D model","timelapse" ,"git repo"],
     "buttonLinks": [
       "https://a360.co/42Ld6s0s",
+      "https://youtu.be/0We5jyu2WXI",
       "https://github.com/MeghanaM4/MAD16"
     ],
     "filters": ["favorites", "projects", "hardware"]
