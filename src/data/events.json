@@ -1,6 +1,13 @@
 [
     {
-        "title": "currently: working on my new website!",
+        "title": "currently: applying to college",
+        "desc": "who knew this stuff was hard?",
+        "date": "oct - dec 2025",
+        "tags": ["they said it would be but I thought they were lying"]
+    },
+
+    {
+        "title": "working on my new website!",
         "desc": "completely revamping my website (and finally learning real web dev). Astro is my way of putting off learning React and Next, but #weball.",
         "date": "oct - nov 2025",
         "tags": ["lowkey webdev is fire", "until you try centering something", "I still don't understand ::after"]
