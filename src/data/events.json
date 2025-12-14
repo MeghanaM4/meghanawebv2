@@ -8,9 +8,9 @@
 
     {
         "title": "hack club's parthenon in new york",
-        "desc": "spent the week in nyc running the largest hackathon for teenage girls in the world. 150 girls came from 14 different countries for a 3-day hackathon in Manhattan, and I saw some of the coolest projects I've ever seen. It was awesome meeting so many different people from all over, some at the beginning of their engineering journeys. Mega cool.",
+        "desc": "spent the week in nyc running the largest hackathon for teenage girls in the world. 150 girls came from 14 different countries came. I learned swears in lots of languages. Mega cool.",
         "date": "nov 14-16 2025",
-        "tags": ["video coming soon!","we carried 17 gallons of dunkin donuts hot chocolate across times square"]
+        "tags": ["we carried 17 gallons of dunkin donuts hot chocolate across times square", "also got to see the Folk Computer which was insane"]
     },
 
     {
@@ -32,5 +32,62 @@
         "desc": "flew out to burlington to work at [hack club](https://hackclub.com) and it was awesome. Dude meeting cool people is awesome. I ran the [pathfinder](https://pathfinder.hackclub.com) and [hermes](https://hermes.hackclub.com) programs",
         "date": "jun - jul 2025",
         "tags": ["Jumped off a waterfall #balling", "Didn't think there was a town smaller than Columbus"]
+    },
+
+    {
+        "title": "undercity @ GitHub HQ in SF",
+        "desc": "ran the hardware help bar at [Undercity](https://undercity.hackclub.com)! And it was incredible. It was so awesome to meet people from all over who like the same stuff I do.",
+        "date": "jul 11-14 2025",
+        "tags": ["stayed awake for 23 hours straight", "thanks john cohn for keeping me sane", "github hq was so cool"]
+    },
+
+    {
+        "title": "launching my HAB payload @ Apex in Boston ",
+        "desc": "after spending 3 months struggling to make [odyssey](https://github.com/meghanam4/odyssey), I launched it! Our balloon went up about 100,000 feet then fell into a tree and was unrecoverable.",
+        "date": "apr - jun 2025",
+        "tags": ["totally worth it", "inhaled a lot of burnt styrofoam fumes but we're #balling"]
+    },
+
+    {
+        "title": "engine hotfire in the desert",
+        "desc": "got to see USC's Liquid Propulsion Lab hotfire their J&J engine out in the mojave and holy crap it was one of the coolest things I've ever experiences. I can't explain how insane it is to feel the explosion of a rocket engine in your ribs. Ashwin, thank you so much.",
+        "date": "may 1-4 2025",
+        "tags": ["pretty much that's life completed", "drove a jeep in the desert and just put me in a rally car already"]
+    },
+
+    {
+        "title": "robot arm hackathon in NYC",
+        "desc": "built a guitar-playing robot arm in new york with some of the coolest 30 year olds ever. also got waterboarded in a chinatown street corner. shout out [michael](https://msgtn.io/about), [omar](https://omar.website/), and [sabrina](https://www.linkedin.com/in/sabrina-ralph-51443157)",
+        "date": "april 19-20 2025",
+        "tags": ["thanks sabrina michael and omar for being cool", "and thank you USC mind challenge for the frostbite", "people clapped."]
+    },
+
+    {
+        "title": "FRC smoky mountain regional",
+        "desc": "competed in the smoky mountain FRC regional in tennessee with my team and it was a lot of fun. Did we get red-carded for the first time in team history? yes. But it was a lot of fun.",
+        "date": "april 2-5 2025",
+        "tags": ["my algae grabber came back hobbling after every match", "the red card wasn't even that much our fault"]
+    },
+
+    {
+        "title": "scrapyard columbus!",
+        "desc": "organized the first teenage-run hackathon in columbus, and it was a **lot** of work. Like a lot. Thank you [Cal](https://cse.osu.edu/people/king.3028), OHI/O, and [priya rao](https://www.worthingtonenterprises.com/company/who-we-are/leadership-board-of-directors/priya-rao) for all the support.",
+        "date": "march 15-16 2025",
+        "tags": ["home to uncr (tinder for uncs)", "hang orpheus (play hangman and get random files deleted off your computer)", "and much much more"]
+    },
+
+    {
+        "title": "scrapyard flagship in austin",
+        "desc": "we made a trash can that makes fun of you when you use it (we crowdsourced insults from other people). the prompt of Most Useless Invention is the best hackathon prompt ever. thanks to [jonathan](https://jonathandong.dev/) and selena for being great teammates.",
+        "date": "march 1-2 2025",
+        "tags": ["thank you sam poder for the insult", "i gotta find a use for the rp5 with 16 gigs of RAM"]
+    },
+
+    {
+        "title": "hacknyu 2025",
+        "desc": "we built a wearable to track tremors of parkinson's patients and I'm super happy with it, even if we didn't win. Met hack club goat [karmanyaah](https://karmanyaah.malhotra.cc/).",
+        "date": "feb 8-9 2025",
+        "tags": ["it was freezing"]
     }
+
 ]
