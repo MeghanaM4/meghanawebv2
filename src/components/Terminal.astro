@@ -40,12 +40,12 @@ const { placeholder = "type back to return to terminal", noBack = "" } = Astro.p
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    let pos = window.scrollY;
+    let startPos = window.scrollY;
 
     window.addEventListener("scroll", () => {
       const element = document.getElementById("inp");
 
-      if (window.scrollY != pos && element) {
+      if (window.scrollY != startPos && element) {
         element.style.opacity = "0.6"; //lowkey feel like a UX genius with this one guys
       } else if (element) {
         element.style.opacity = "1";

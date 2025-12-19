@@ -208,14 +208,14 @@ if (Astro.request.method === "POST") {
   }
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+    if (e.key === "ArrowDown") {
       e.preventDefault();
       const now = Date.now();
       if (now - lastScrollTime >= SCROLL_COOLDOWN) {
         nextEvent();
         lastScrollTime = now;
       }
-    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+    } else if (e.key === "ArrowUp") {
       e.preventDefault();
       const now = Date.now();
       if (now - lastScrollTime >= SCROLL_COOLDOWN) {

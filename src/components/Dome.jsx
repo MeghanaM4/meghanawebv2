@@ -88,7 +88,7 @@ export default function DomeGallery({
   minRadius = 900,
   maxRadius = Infinity,
   padFactor = 0.5,
-  overlayBlurColor = "rgba(0, 0, 0, 0.7)",
+  overlayBlurColor = "rgba(0, 0, 0, 0.5)",
   maxVerticalRotationDeg = DEFAULTS.maxVerticalRotationDeg,
   dragSensitivity = DEFAULTS.dragSensitivity,
   enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,

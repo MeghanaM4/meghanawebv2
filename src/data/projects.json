@@ -109,7 +109,7 @@
   {
     "name": "Pathfinder",
     "slug": "pathfinder",
-    "description": "I ran a program for 100 teenagers all over the world, where if they made a custom PCB controller board and efidget, they got the money and parts to build it.",
+    "description": "I ran a program for 100 teenagers all over the world where if they made a custom PCB controller board and efidget, they got the money and parts to build it.",
     "extendedDesc": "**extended description coming soon**",
     "date": "jun - oct 2025",
     "buttons": ["site", "git repo", "project gallery"],
