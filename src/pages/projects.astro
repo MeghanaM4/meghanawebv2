@@ -6,24 +6,6 @@ import Card from "../components/Card.astro";
 import data from "../data/projects.json";
 import Footer from "../components/Footer.astro";
 import Terminal from "../components/Terminal.astro";
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const command = data.get("input");
-    if (command === "back") {
-      return Astro.redirect("/terminal");
-    } else if (command === "exit") {
-      return Astro.redirect("/");
-    } else if (command === "sudo rm -rf /*") {
-      console.log("you think you're funny, don't you?");
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
 ---
 
 <html>

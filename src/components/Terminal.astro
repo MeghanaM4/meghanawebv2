@@ -1,10 +1,17 @@
 ---
 import "../styles/global.css";
 
-const { placeholder = "type back to return to terminal", noBack = "" } = Astro.props;
+const { placeholder = "type back to return to terminal", termPage = false } =
+  Astro.props;
+
+  //need to check if it's the terminal page cause then some commands change and there's no back button on mobile
+  let noBack = "";
+  if(termPage) {
+    noBack = "hidden";
+  }
 ---
 
-<a
+<a id="backbtn"
   href="./terminal"
   class=`${noBack} lg:hidden fixed bottom-[1rem] rounded-[5rem] w-[3rem] aspect-square bg-[#FDC576]
       ml-[1rem] z-5 flex items-center justify-center`
@@ -22,15 +29,17 @@ const { placeholder = "type back to return to terminal", noBack = "" } = Astro.p
   >
 </a>
 
-<div
-  id="inp"
+<div id="input-window"
   class="hidden lg:flex fixed bottom-[1rem] h-[3rem] w-fit bg-[#FDC576]
       ml-[1rem] z-10 items-center rounded-[3rem] hover:!opacity-100 transition-opacity"
 >
-  <form method="POST" action={Astro.url.pathname} autocomplete="off" enctype="application/x-www-form-urlencoded">
+  <form
+    autocomplete="off"
+  >
     <input
       type="text"
       name="input"
+      id="inp"
       placeholder={placeholder}
       class="h-[3rem] focus:outline-none text-[#2b2b2b] m-[1rem] placeholder:italic italic w-[15rem]"
       style="font-family: freesans; font-weight: bold;"
@@ -38,12 +47,49 @@ const { placeholder = "type back to return to terminal", noBack = "" } = Astro.p
   </form>
 </div>
 
-<script is:inline>
+<script>
+  //you may be asking: why did you do this janky piece of work instead of defining the frontmatter variables in the script? Well, then the script is executed as inline and that slows stuff down (SSR is my opp) so I'm doing this instead. I feel smart.
+  let isTerminalPage = false;
+  if(document.getElementById("backbtn")?.classList.contains("hidden")) {
+    isTerminalPage = true;
+  }
+
+  const pages = ["about", "projects", "contact", "now", "photodome"];
+  //document.querySelectorAll("headings").forEach(element => pages.push(element.innerHTML)); I can't use this code cause this isn't in the DOM of the terminal page but I'm keeping this anyway because I'm proud of it.
+
+  const form = document.getElementById("inp") as HTMLInputElement;
+
+  form?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      const command = form.value.toLowerCase().trim();
+      console.log(command);
+      form.value = "";
+
+      if (command === "exit") {
+        window.location.href = "/";
+
+      } else if (isTerminalPage && pages.find((element) => command === "cd " + element)) {
+        //I am a wizard.
+        window.location.href =
+          "/" + pages.find((element) => command === "cd " + element);
+
+      } else if (!isTerminalPage && command === "cd ./") {
+        window.location.href = "/terminal";
+
+      } else if (command === "sudo rm -rf /*") {
+        console.log("you think you're funny, don't you?");
+      }
+    }
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     let startPos = window.scrollY;
 
     window.addEventListener("scroll", () => {
-      const element = document.getElementById("inp");
+      const element = document.getElementById("input-window");
+      console.log(window.scrollY);
 
       if (window.scrollY != startPos && element) {
         element.style.opacity = "0.6"; //lowkey feel like a UX genius with this one guys

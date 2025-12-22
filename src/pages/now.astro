@@ -5,27 +5,6 @@ import "../styles/now.css";
 import Nowevent from "../components/Nowevent.astro";
 import data from "../data/events.json";
 import Terminal from "../components/Terminal.astro";
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const command = data.get("input");
-    if(command === "back") {  
-      return Astro.redirect("/terminal");
-          
-    } else if (command === "exit") {
-      return Astro.redirect("/");
-
-    } else if (command === "sudo rm -rf /*") {
-      console.log("you think you're funny, don't you?");
-    }
-
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
 ---
 
 <html>
@@ -238,7 +217,7 @@ if (Astro.request.method === "POST") {
     }
   }, { passive: true });
 
-  events.forEach((event, index) => {
+  events.forEach((event) => {
     event.addEventListener("click", () => {
       if (event.classList.contains("prev")) {
         prevEvent();

@@ -5,24 +5,6 @@ import data from "../data/photodome.json";
 import "../styles/global.css";
 import Terminal from "../components/Terminal.astro";
 
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const command = data.get("input");
-    if(command === "back") {  
-      return Astro.redirect("/terminal");
-    } else if (command === "exit") {
-      return Astro.redirect("/");
-    } else if (command === "sudo rm -rf /*") {
-      console.log("you think you're funny, don't you?");
-    }
-
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
 
 const imgs = data.map((img) => ({
   src: `../photodome/${img.src}.webp`,
@@ -40,7 +22,7 @@ const imgs = data.map((img) => ({
   <div class="fixed inset-0 w-screen h-screen">
     <a href="./terminal" class="text-[3rem] lg:text-[4rem]"
       style="font-family:static !important; z-index: 20; position: fixed; margin-left: 1rem; letter-spacing: 0.7rem; color:#c4cdde;"
-    >
+    > 
       photodome
   </a>
 

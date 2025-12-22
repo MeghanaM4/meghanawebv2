@@ -3,32 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import "../styles/terminal.css";
 import Termy from "../components/Terminal.astro";
-
-const pages = ["about", "projects", "contact", "now", "photodome", "terminal"];
-//document.querySelectorAll("headings").forEach(element => pages.push(element.innerHTML)); //I can't use this code cause document doesn't exist in frontmatter but I'm keeping this anyway because I'm proud of it.
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const command = data.get("input") as String;
-
-    console.log(command);
-    
-    if (command.toLowerCase() === "exit") {
-      return Astro.redirect("/");
-
-    } else if (pages.find((element) => command.toLowerCase() === "cd " + element)) { //I am a wizard.
-      return Astro.redirect("/" + pages.find(element => command.toLowerCase() === ("cd " + element)));
-
-    } else if (command === "sudo rm -rf /*") {
-      console.log("you think you're funny, don't you?");
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
 ---
 
 <html>
@@ -93,7 +67,7 @@ if (Astro.request.method === "POST") {
     </div>
   </div>
 
-  <Termy placeholder="use me as a terminal window!" noBack = "hidden" />
+  <Termy placeholder="use me as a terminal window!" termPage = true />
 </Layout>
 
 <script>

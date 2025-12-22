@@ -3,25 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Terminal from "../components/Terminal.astro";
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const command = data.get("input");
-    if(command === "back") {  
-      return Astro.redirect("/terminal");
-    } else if (command === "exit") {
-      return Astro.redirect("/");
-    } else if (command === "sudo rm -rf /*") {
-      console.log("you think you're funny, don't you?");
-    }
-
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
 ---
 
 <html>
@@ -44,12 +25,14 @@ if (Astro.request.method === "POST") {
     </a>
 
     <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
-      <div class="ml-[2rem] mr-[2rem] mb-[2rem] bg-[#C4CDDE] p-[1rem] rounded-xl">
+      <div
+        class="ml-[2rem] mr-[2rem] mb-[2rem] bg-[#C4CDDE] p-[1rem] rounded-xl"
+      >
         <p
           style="font-family: freesans; font-weight: 700;"
           class="text-[#414040] md:text-[1.5rem] sm:text-[1rem]"
         >
-          hey! I'm Meghana. I'm a 16 year old that spends her free time messing
+          hey! I'm Meghana. I'm a 17 year old that spends her free time messing
           around with robots, making PCBs, and failing to write firmware. I love
           <a
             target="_blank"
@@ -66,15 +49,15 @@ if (Astro.request.method === "POST") {
           >
           <br /><br />
           Right now, I'm finishing school and trying to <a
-            href="./projects"
-            class="hover-underline text-[#1f1f1f]">build awesome stuff</a
+            href="/projects"
+            class="hover-underline text-[#1f1f1f]">build cool stuff</a
           >
         </p>
       </div>
       <img
         title="me at the zion narrows (I'm looking at nothing)"
         class="md:w-[30%] sm:w-[30%] w-[70%] mr-[2rem] ml-[2rem] mb-[2rem]"
-        src="picture.jpg"
+        src="picture.webp"
       />
     </div>
 
@@ -84,5 +67,4 @@ if (Astro.request.method === "POST") {
       <Footer />
     </div>
   </div>
-
 </Layout>
