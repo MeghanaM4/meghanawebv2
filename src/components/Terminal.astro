@@ -75,7 +75,7 @@ const { placeholder = "type back to return to terminal", termPage = false } =
         window.location.href =
           "/" + pages.find((element) => command === "cd " + element);
 
-      } else if (!isTerminalPage && command === "cd ./") {
+      } else if (!isTerminalPage && (command === "cd ./" || command === "back")) {
         window.location.href = "/terminal";
 
       } else if (command === "sudo rm -rf /*") {
@@ -84,7 +84,6 @@ const { placeholder = "type back to return to terminal", termPage = false } =
     }
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
     let startPos = window.scrollY;
 
     window.addEventListener("scroll", () => {
@@ -97,5 +96,4 @@ const { placeholder = "type back to return to terminal", termPage = false } =
         element.style.opacity = "1";
       }
     });
-  });
 </script>
