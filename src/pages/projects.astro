@@ -133,7 +133,10 @@ import Terminal from "../components/Terminal.astro";
 
     function openModal() {
       const hash = decodeURIComponent(window.location.hash.substring(1));
-      console.log(hash);
+      
+      if(!hash) {
+        return;
+      }
 
       document.querySelectorAll("dialog").forEach((dialog) => {
         if (dialog.id !== hash) {
@@ -186,15 +189,18 @@ import Terminal from "../components/Terminal.astro";
         if (filter == "all") {
           //I feel like there's definitely a way to make this better but this is working so...
           userFilters = ["all"];
+
         } else if (filter != "all" && userFilters.includes("all")) {
           userFilters = userFilters.filter((i) => i !== "all");
           userFilters = [filter];
+
         } else if (userFilters.includes(filter)) {
+          
           userFilters = userFilters.filter((i) => i !== filter); //all these filters are getting confusing
         } else {
           userFilters.push(filter);
+
         }
-        console.log(userFilters);
 
         buttons.forEach((btn) => {
           btn.classList.remove("selected");

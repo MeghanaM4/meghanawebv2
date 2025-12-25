@@ -90,7 +90,7 @@ import { marked } from "marked";
     </div>
   </div>
 
-  <div class="sidebar cursor-pointer">
+  <div class="sidebar pointer-events-none">
     <a
       class="sidebar-arrow flex flex-row gap-2"
       href={`#${encodeURIComponent(project.slug)}`}
@@ -128,10 +128,10 @@ import { marked } from "marked";
     </div>
 
     <div
-      class="relative z-2 w-[95%] lg:w-[70%] h-1/2 lg:h-3/4 rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
+      class="relative z-2 w-[95%] md:h-[90%] lg:w-[70%] h-[90%] rounded-xl bg-[#D9D9D9] border border-solid border-[#C4CDDE] border-[0.4rem] overflow-y-auto overflow-x-hidden"
     >
       <button
-        class="exit-button absolute float-right top-0 right-0 z-10 exit m-[0.5rem] cursor-pointer hover:bg-white p-[0.25rem] rounded-xl transition ease"
+        class="exit-button absolute float-right top-0 right-0 z-10 exit m-[0.5rem] cursor-pointer button-dither bg-white border border-[0.2rem] p-[0.25rem] rounded-xl"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -147,10 +147,10 @@ import { marked } from "marked";
       </button>
 
       <div class="h-full">
-        <div class="h-[35%] md:h-[60%] w-full">
-          <div class="absolute text-white z-2 m-[1rem] w-fit">
+        <div class="h-[65%] w-full">
+          <div class="absolute text-white z-100 m-[1rem] w-fit h-fit bg-black">
             <p
-              class="text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] hidden md:text-[1.3rem] leading-[1.3rem]"
+              class="text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] md:text-[1.3rem] leading-[1.3rem]"
               style="font-family: freesans; font-weight: 700; width:min-content"
             >
               {project.name}
@@ -165,16 +165,6 @@ import { marked } from "marked";
         </div>
 
         <div class="flex flex-row gap-4 m-[1rem] items-center">
-          <!-- only show on mobile -->
-          <div class="w-fit">
-            <p
-              class="w-fit text-white p-[0.3rem] bg-black pr-[0.5rem] pl-[0.5rem] text-[1.3rem] md:hidden leading-[1.3rem]"
-              style="font-family: freesans; font-weight: 700"
-            >
-              {project.name}
-            </p>
-          </div>
-
           <p
             class="w-fit"
             style="font-family:freesans; font-weight: 700; color:#757575; font-style: italic;"
@@ -202,7 +192,7 @@ import { marked } from "marked";
               <a
                 target="_blank"
                 href={project.buttonLinks[i]}
-                class="group link link-sec text-[1.2rem] md:text-[1.5rem] pr-[1rem] pl-[1rem] md:pr-[3rem] md:pl-[3rem] pb-[0.5rem] mt-[1rem] lg:mt-[0rem] pt-[0.5rem] rounded-sm"
+                class="group link button-dither link-sec text-[1.2rem] md:text-[1.5rem] pr-[1rem] pl-[1rem] md:pr-[3rem] md:pl-[3rem] pb-[0.5rem] mt-[1rem] lg:mt-[0rem] pt-[0.5rem] rounded-sm"
               >
                 <span class="flex h-min items-center gap-1">
                   {buttonText}

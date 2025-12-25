@@ -80,6 +80,18 @@ const { placeholder = "type back to return to terminal", termPage = false } =
 
       } else if (command === "sudo rm -rf /*") {
         console.log("you think you're funny, don't you?");
+        
+      } else {
+        form.placeholder = "no command found";
+
+        setTimeout(() => {
+          if(isTerminalPage) {
+            form.placeholder = "use me as a terminal window!";
+      
+          } else {
+            form.placeholder = "type back to return to terminal";
+          }
+        }, 1200);
       }
     }
   });

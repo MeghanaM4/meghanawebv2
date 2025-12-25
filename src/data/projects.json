@@ -8,11 +8,11 @@
     "tag": true,
     "tagColor": "#C7B363",
     "tagText": "FAVORITE",
-    "buttons": ["3D model","timelapse" ,"git repo"],
+    "buttons": ["3D model", "git repo", "timelapse"],
     "buttonLinks": [
       "https://a360.co/42Ld6s0s",
-      "https://youtu.be/0We5jyu2WXI",
-      "https://github.com/MeghanaM4/MAD16"
+      "https://github.com/MeghanaM4/MAD16",
+      "https://youtu.be/0We5jyu2WXI"
     ],
     "filters": ["favorites", "projects", "hardware"]
   },
@@ -39,7 +39,7 @@
     "name": "Scrapyard Columbus",
     "slug": "SYCMH",
     "description": "I brought 50 teenagers from all over my city to participate in a useless-invention hackathon. I got sponsors, generated interest, planned out logistics, and lost a lot of sleep.",
-    "extendedDesc": "I brought **50 teenagers** from <u> all over my city</u> to participate in a [useless-invention hackathon](https://scrapyard.hackclub.com/columbus). I got sponsors, generated interest, planned out logistics, and lost a lot of sleep. I started planning in January, with Hack Club’s announcement that they would be running a global, simultaneous hackathon organized by teenagers in cities all over the world. I cold-emailed tons of companies trying to get sponsorships, reached out to a ton of organizations attempting to get a venue for free, and emailed hundreds of teachers trying to generate interest for a hackathon in a city without a bustling tech scene or teenagers who are motivated to build cool stuff.     <br />     <br /> Scrapyard Columbus partnered with OHI/O, The Ohio State University’s hackathon organization, and a huge thank you to Cal King for taking a chance on me. In the end, 50 teenagers all across my hometown of Columbus, Ohio showed up, I raised $3k in sponsorship money, and everyone walked out with awesome merch and a project they were proud of.",
+    "extendedDesc": "I brought **50 teenagers** from <u> all over my city</u> to participate in a [useless-invention hackathon](https://scrapyard.hackclub.com/columbus). I got sponsors, generated interest, planned out logistics, and lost a lot of sleep. I started planning in January, with Hack Club's announcement that they would be running a global, simultaneous hackathon organized by teenagers in cities all over the world. I cold-emailed tons of companies trying to get sponsorships, reached out to a ton of organizations attempting to get a venue for free, and emailed hundreds of teachers trying to generate interest for a hackathon in a city without a bustling tech scene or teenagers who are motivated to build cool stuff.     <br />     <br /> Scrapyard Columbus partnered with OHI/O, The Ohio State University's hackathon organization, and a huge thank you to Cal King for taking a chance on me. In the end, 50 teenagers all across my hometown of Columbus, Ohio showed up, I raised $3k in sponsorship money, and everyone walked out with awesome merch and a project they were proud of.",
     "date": "jan - mar 2025",
     "buttons": ["site", "gallery"],
     "buttonLinks": [
@@ -203,13 +203,15 @@
     "filters": ["projects", "hardware", "hack club"]
   },
   {
-    "name": "MADPAD",
+    "name": "Madpad",
     "slug": "madpad",
     "description": "A custom Macropad using a XIAO RP2040 that has 9 keys, an OLED screen, and a rotatary encoder. The first PCB I ever made.",
     "extendedDesc": "**extended description coming soon**",
     "date": "oct 2024",
     "buttons": ["git repo"],
-    "buttonLinks": ["https://github.com/hackclub/hackpad/tree/main/hackpads/madpad"],
+    "buttonLinks": [
+      "https://github.com/hackclub/hackpad/tree/main/hackpads/madpad"
+    ],
     "filters": ["projects", "hardware", "hack club"]
   }
 ]
